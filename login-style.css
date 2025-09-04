@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        overflow-y: hidden;
+        position: relative; /* Ensure positioning context for the gradient */
+        background-image: url("assets/images/bg.jpg") ;
+        min-height: 100vh; /* Ensure the body covers the viewport height */
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    .blur-load{
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .blur-load.loaded > img {
+      opacity: 1;
+    }
+    
+    .blur-load > img {
+      opacity: 0;
+      transition: opacity 200ms ease-in-out;
+    }
+
+    .intro {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Same color as the background */
+        opacity: 1;
+        z-index: 1;
+    }
+
+    /* Main container */
+    .login-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent; /* Light background, override if needed */
+      position: relative;
+      z-index: 2;
+      background-color: rgba(255, 255, 255, 0.445);
+    }
+    
+    .white-color{
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    .yellow-color{
+        color: #f5aa1c;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Login box with split sections */
+    .login-box {
+      display: flex;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Left side: Login form section */
+    .login-form {
+      flex: 1;
+      background-color: #211e56; /* Dark blue */
+      color: #fff;
+      padding: 30px;
+    }
+    
+    .login-form h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      align-self: center;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-form h2 {
+        font-size: 1.50rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        align-self: center;
+        text-align: center;
+      }
+    
+    .login-form p {
+      margin-bottom: 30px;
+      align-self: center;
+      text-align: center ;
+      font-weight: bolder;
+    }
+    
+    .login-form label {
+      font-weight: 500;
+    }
+    
+    .btn-custom {
+      margin-top: 20px;
+      background-color: #f5aa1c; /* Yellow button */
+      border: none;
+      color:  #211e56;
+      font-weight: bolder;
+      height: 50px;
+    }
+
+    .btn-custom:hover {
+        margin-top: 20px;
+        background-color: #fabc4a; /* Yellow button */
+        border: none;
+        color:  #211e56;
+        font-weight: bold;
+      }
+      
+    
+    /* Right side: Logo section */
+    .logo-section {
+      flex: 1;
+      background-color: #fff;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    
+    .logo-section img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Footer text at the bottom right */
+    .footer-text {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: #211e56;
+      font-size: 0.8rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .login-box {
+        flex-direction: column;
+        width: 90%;
+      }
+      .login-form,
+      .logo-section {
+        padding: 20px;
+      }
+      .logo-section{
+        display: none;
+      }
+
+      .login-form p{
+        font-weight: lighter;
+      }
+
+      .login-form h1{
+        margin-top: 20px;
+      }
+
+      .btn-custom{
+        margin-bottom: 20px;
+      }
+    }
+
+    @keyframes fadeOut {
+        0% {opacity: 1;}
+        100% {opacity: 0;} 
+    } 
+
+    @keyframes fadeIn {
+        100% {opacity: 1;} 
+        0% {opacity: 0;}
+    }

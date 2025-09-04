@@ -1,0 +1,128 @@
+<head>
+  <title>Manage Courses</title>
+  <style>
+    .course-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    /* Course cards container */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    /* Add Course card */
+    .add-course-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 280px;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+
+    .add-course-card:hover {
+      background-color: #f9f9f9;
+      border-color: #007bff;
+    }
+
+    .add-course-icon {
+      font-size: 3rem;
+      color: #007bff;
+    }
+
+    .add-course-text {
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* Course card */
+    .course-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      height: 280px;
+      min-width: 280px;
+      overflow: hidden;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      cursor: pointer;
+    }
+
+    .course-image {
+      height: 120px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .course-card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Pushes actions to bottom */
+      flex: 1; /* Equal height for all cards */
+      padding: 15px;
+    }
+
+    .course-name {
+      white-space: nowrap;       /* Keep text on one line */
+      overflow: hidden;          /* Hide overflow */
+      text-overflow: ellipsis;   /* Add "..." if too long */
+    }
+
+    .course-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: auto; /* Stick actions to bottom */
+    }
+
+    .course-actions button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .course-actions button.edit {
+      color: #007bff;
+    }
+
+    .course-actions button.delete {
+      color: #dc3545;
+    }
+    
+  </style>
+</head>
+
+<div class="container-fluid">
+  <h1>MANAGE COURSES</h1>
+  <br>
+
+  <!-- Controls: Search + Status Filter -->
+  <div class="course-controls">
+    <!-- Search -->
+    <input type="text" class="form-control w-50" placeholder="Search courses" id="searchCourse">
+  </div>
+
+  <!-- Courses Grid -->
+<div class="courses-grid" id="courseContainer"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+

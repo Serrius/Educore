@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCore</title>
+    <link rel="icon" href="assets/images/logo.png" />
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Intro Div -->
+    <div id="intro" class="d-flex flex-column justify-content-center align-items-center text-center p-4 position-fixed top-0 start-0 w-100 h-100 bg-white" style="z-index: 9999;">
+        <img src="assets/images/logo.png" class="img-fluid mb-4" style="max-height: 150px; max-width: 150px;" alt="Logo">
+        <div style="height: 5%;"></div>
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar-toggle collapsed">
+            <div class="sidebar-logo">
+                <a href="#"><span class="white-color">E</span><span class="yellow-color">du</span><span class="white-color">Co</span><span class="yellow-color">r</span><span class="white-color">e</span></a>
+            </div>
+            <div class="profile">
+                <center><img class="profile-picture" src="assets/images/profile.png"></center>
+                <center>
+                    <p class="username">Loading...</p>
+                    <p class="rank">Loading...</p>
+                </center>
+            </div>
+            <!-- Sidebar Navigation -->
+            <ul class="sidebar-nav p-0">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link selected">
+                        <i class="bi bi-house-door-fill"></i>
+                        <span>HOME</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-megaphone-fill"></i>
+                        <span>ANNOUNCEMENTS</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-calendar-event"> </i>
+                        <span>EVENTS</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-fingerprint"></i>
+                        <span>E-VOTING</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-cash-coin"></i>
+                        <span>ORGANIZATION FEES</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-clock-history"></i>
+                        <span>TRANSACT HISTORY</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Sidebar Footer with Logout Button -->
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-footer-link" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                    <span>LOG OUT</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Component -->
+        <div class="main">
+            <nav class="navbar navbar-expand justify-content-between">
+                <button class="toggler-btn" type="button">
+                    <i id="menu" class="bi bi-list"></i>
+                </button>
+                <div class="ms-auto d-flex align-items-center">
+                    <span style="visibility: hidden;">####</span>
+                    <!-- Notification Bell -->
+                    <button type="button" class="btn btn border-0" id="bellButton" data-bs-toggle="popover"
+                        data-bs-placement="bottom" data-bs-trigger="focus"
+                        data-bs-custom-class="custom-popover" title="Notification"
+                        data-bs-content="Your notification content" data-bs-container="body">
+                        <i id="bellIcon" class="bi bi-bell"></i>
+                    </button>
+                    <!-- Profile Icon -->
+                    <button type="button" class="btn btn border-0" id="popoverButton2" 
+                        data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom" 
+                        data-bs-custom-class="custom-popover"
+                        title="Account" data-bs-trigger="focus"
+                        data-bs-content='
+                        <a href="#" class="d-block"><i class="bi bi-person"> </i>Profile</a>
+                        <a href="#" class="d-block"><i class="bi bi-gear"> </i>Settings</a>
+                        <hr class="my-1">
+                        <a href="#" class="d-block"><i class="bi bi-question-circle"> </i>About Us</a>'>
+                        <img class="profile-icon" src="assets/images/profile.png">
+                    </button>
+                </div>
+            </nav>
+
+             <!-- Content area where pages will load -->
+            <div id="content-area" class="p-4">
+                <!-- Default content -->
+                <div class="container-fluid">
+                    <h1>WELCOME TO EDUCORE</h1>
+                    <p class="text-muted">Please select an item from the sidebar to get started.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="warning bi bi-exclamation-triangle text-warning"></i>
+                    <p>Are you sure you want to log out?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button onclick="logoutUser()" class="btn btn-danger">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Error Modal -->
+    <div class="modal fade" id="statusErrorsModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-m" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#db3646" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                        <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                        <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+                    </svg>
+                    <h4 class="text-danger mt-3">Error</h4>
+                    <p id="errorDialogue" class="mt-3">Error Message Will Show Here</p>
+                    <button type="button" class="btn btn-lg mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Success Modal -->
+    <div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-m" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                    </svg>
+                    <h4 class="text-success mt-3">Success!</h4>
+                    <p id="successDialogue" class="mt-3">Success Message Will Show Here</p>
+                    <button type="button" class="btn btn-lg mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/shared-user-function.js"></script>
+    <script src="js/user-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="js/user.js"></script>
+</body>
+
+</html>

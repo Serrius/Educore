@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Success & Error Modals always on top */
+#statusSuccessModal,
+#statusErrorsModal {
+  z-index: 2000 !important; /* higher than default modal (1055) */
+}
+
+#statusSuccessModal .modal-backdrop,
+#statusErrorsModal .modal-backdrop {
+  z-index: 1999 !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-y: auto;
+}
+
+h1 {
+    font-weight: 800;
+    color: #1b1b57;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.custom-popover {
+    --bs-popover-max-width: 220px;
+    --bs-popover-border-color: #211e56; /* Violet border */
+    --bs-popover-header-bg: #211e56;
+    --bs-popover-header-color: white;
+    --bs-popover-body-padding-x: 1rem;
+    --bs-popover-body-padding-y: 0.5rem;
+}
+
+  .popover-body a {
+    display: block;
+    text-decoration: none;
+    color: #211e56;
+    padding: 5px 50px 5px 5px;
+    font-size: 20px;
+}
+
+  .popover-body a:hover {
+    color: #211e56; /* Match popover theme */
+    background-color: rgb(212, 208, 208);
+    border-radius: 5px;
+}
+
+.profile{
+    margin-bottom: 10px;
+}
+.profile-picture{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+}
+
+.profile-icon{
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+#bellIcon{
+    color: #211e56;
+    font-size: 33px;
+}
+
+.warning{
+    font-size: 90px;
+}
+
+.username{
+    color: #FFF;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+.rank{
+    color: #FFF;
+    font-weight: 800;
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+}
+
+.white-color{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.yellow-color{
+    color: #f5aa1c;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blue-color{
+    color: #1b1b57;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    background-color: whitesmoke;
+}
+
+#sidebar {
+    max-width: 320px;
+    min-width: 320px;
+    transition: all 0.35s ease-in-out;
+    background-color: #1b1b57;
+    display: flex;
+    flex-direction: column; 
+}
+
+.sidebar-item > a.sidebar-link {
+    font-weight: bolder;
+}
+
+#sidebar.collapsed {
+    margin-left: -320px;
+}
+
+.toggler-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+}
+
+.toggler-btn i {
+    font-size: 2.75rem;
+    color: #1b1b57;
+    font-weight: 5000;
+}
+
+.navbar {
+    padding: 1.15rem 1.5rem;
+    background-color: rgb(221, 219, 219);
+}
+
+.sidebar-nav {
+    flex: 1 1 auto;
+}
+
+.sidebar-logo {
+    padding: 1.15rem 1.5rem;
+    text-align: center;
+}
+
+.sidebar-logo a {
+    color: #FFF;
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+.sidebar-header {
+    color: #FFF;
+    font-size: .75rem;
+    padding: 1.5rem 1.5rem .375rem;
+}
+
+a.sidebar-link {
+    padding: .625rem 2rem;
+    color: #FFF;
+    position: relative;
+    transition: all 0.35s;
+    display: block;
+    font-size: 1.10rem;
+}
+
+a.sidebar-link.selected {
+    background-color: #f5aa1c; /* Change this to your desired background color */
+    color: #1b1b57; /* Ensures the text color contrasts with the background */
+    padding: 8px; /* Optional: Adjusts padding for a better look */
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+    z-index: 2;
+}
+
+a.sidebar-link:hover {
+    background-color: #facd79c7;
+    color: #1b1b57;
+}
+
+a.sidebar-dropdown-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    position: relative;
+    transition: all 0.35s;
+    display: block;
+    font-size: 1.10rem;
+}
+
+a.sidebar-dropdown-link:hover {
+    background-color: #facd79c7;
+    color: #1b1b57;
+}
+
+.sidebar-footer{
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 5vh;
+}
+
+a.sidebar-footer-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    transition: all 0.35s;
+    display: block;
+    font-size: 1.30rem;
+    font-weight: bolder;
+    border: #f5aa1c solid 2px;
+    width: 250px;
+}
+
+a.sidebar-footer-link:hover {
+    background-color: #f9f6f630;
+}
+
+
+.sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-dropdown {
+    background-color: rgba(2, 2, 2, 0.336); /* subtle dark overlay */
+    
+}
+
+/* Screen size less than 768px */
+
+@media (max-width:768px) {
+
+    .sidebar-toggle {
+        margin-left: -320px;
+    }
+
+    #sidebar.collapsed {
+        margin-left: 0;
+    }
+
+    .w-100{
+        width: 250px;
+    }
+
+    body{
+        overflow: auto;
+    }
+
+}
+
+/*For Future Karl butangi og minimum width ang mga containers or 
+cards para di sila murag tae og naka open ang sidebar*/
+
+.container {
+    min-width: 300px; /* Adjust this based on your design */
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.fade-out{
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+/*table custom designs*/
+
+/* Adjust tab buttons for mobile */
+.nav-tabs .nav-link {
+    font-size: 14px;
+    padding: 8px;
+}
+        
+.action-buttons {
+    text-align: center;
+}
+
+.dataTables_filter {
+    display: none;
+}
+
+
+/* Style the container */
+.container {
+    background-color: white;  /* Light background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
+
+.dataTables_empty{
+    text-align: center;
+}
+
+.nav-link{
+    color: black;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* Same color as the background */
+    opacity: 1;
+    z-index: 15;
+    overflow: hidden;
+}
+
+.intro-img{
+    margin-top: 60px;
+    z-index: 16;
+    text-align: center;
+}
+
+.intro p{
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.intro h3{
+    font-weight: bolder;
+}
+
+.course-title {
+    height: 3em;                 /* limits height to ~2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;       /* show max 2 lines */
+    -webkit-box-orient: vertical;
+  }
+  
+
+/*Modal Animations Blahh Blahh Blahh*/
+
+.modal#statusSuccessModal .modal-content svg, 
+.modal#statusErrorsModal .modal-content svg {
+	width: 100px; 
+	display: block; 
+	margin: 0 auto;
+}
+.modal#statusSuccessModal .modal-content .path, 
+.modal#statusErrorsModal .modal-content .path {
+	stroke-dasharray: 1000; 
+	stroke-dashoffset: 0;
+}
+.modal#statusSuccessModal .modal-content .path.circle, 
+.modal#statusErrorsModal .modal-content .path.circle {
+	-webkit-animation: dash 0.9s ease-in-out; 
+	animation: dash 0.9s ease-in-out;
+}
+.modal#statusSuccessModal .modal-content .path.line, 
+.modal#statusErrorsModal .modal-content .path.line {
+	stroke-dashoffset: 1000; 
+	-webkit-animation: dash 0.95s 0.35s ease-in-out forwards; 
+	animation: dash 0.95s 0.35s ease-in-out forwards;
+}
+.modal#statusSuccessModal .modal-content .path.check, 
+.modal#statusErrorsModal .modal-content .path.check {
+	stroke-dashoffset: -100; 
+	-webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards; 
+	animation: dash-check 0.95s 0.35s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100%{
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash-check { 
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+@keyframes dash-check {
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+.box00{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
