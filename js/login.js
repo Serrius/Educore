@@ -85,6 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
                       localStorage.setItem('id', data.id);
                       localStorage.setItem('username', data.full_name); // not just the input username
                       localStorage.setItem('role', data.role);
+                      localStorage.setItem('currentUserRole', data.role || '');
+                      localStorage.setItem('currentUserDepartment', data.department || '');
+                      localStorage.setItem('firstName', data.first_name || '');
                     
                       if (data.profile_picture) {
                         localStorage.setItem('profile_picture', data.profile_picture);
@@ -97,6 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         case 'admin':
                           window.location.href = 'admin.html';
                           break;
+                        case 'special-admin':
+                          window.location.href = 'special-admin.html';
+                          break;
+                        case 'treasurer':
+                          window.location.href = 'treasurer.html';
+                          break;  
                         case 'non-admin':
                           window.location.href = 'user.html';
                           break;

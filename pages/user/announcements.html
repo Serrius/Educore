@@ -1,0 +1,169 @@
+<!-- announcements.html -->
+<head>
+  <title>Announcements</title>
+  <style>
+    .ann-card img {
+      width: 46px;
+      height: 46px;
+      object-fit: cover;
+    }
+    .annStatus {
+      min-width: 50px;
+    }
+    .audience-wrap .form-check {
+      margin-right: .75rem;
+    }
+    .audience-course-row .badge {
+      font-size: .85rem;
+    }
+    h1 {
+      letter-spacing: 0.08em;
+      font-size: 1.6rem;
+    }
+    #user-announcements .page-subtitle {
+      font-size: 0.8rem;
+    }
+    #user-announcements .nav-tabs .nav-link {
+      font-weight: 500;
+      font-size: 12px;
+    }
+    #user-announcements .nav-tabs .nav-link i {
+      margin-right: 0.35rem;
+    }
+    #user-announcements .search-wrap {
+      max-width: 340px;
+    }
+    #user-announcements .table thead th {
+      white-space: nowrap;
+    }
+    #user-announcements .badge {
+      font-size: 0.75rem;
+    }
+    #user-announcements .view-toggle-group .btn {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.875rem;
+    }
+    #userAnnouncementActiveYearSelect{
+      border: none;
+      box-shadow: none;
+      background-color: transparent;
+    }
+    #userAnnouncementAySelect{
+      border: none;
+      box-shadow: none;
+      background-color: transparent;
+    }
+    select {
+      -webkit-appearance: none; /* For Safari, Chrome, Opera */
+      -moz-appearance: none;    /* For Firefox */
+      appearance: none;         /* Standard property */
+    }
+    .no-arrow {
+      /* Hides the custom Bootstrap background arrow */
+      background-image: none !important; 
+      
+      /* Hides the native OS arrow for cross-browser compatibility */
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+    .no-arrow::-ms-expand {
+      display: none;
+    }
+  </style>
+</head>
+
+<!-- user-announcements.html -->
+<div class="container-fluid" id="user-announcements">
+  <!-- Header -->
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <div class="d-flex flex-column">
+      <h1 class="mb-0 text-uppercase">ANNOUNCEMENTS</h1>
+      <span class="page-subtitle text-muted">
+        View current school announcements for your department.
+      </span>
+    </div>
+
+    <!-- Right side info -->
+    <div class="text-end small" style="display: none;">
+      <div class="text-muted">Current School Year:</div>
+      <span id="userCurrentSchoolYear" class="badge bg-primary">—</span>
+    </div>
+  </div>
+  
+  <!-- Filters -->
+  <div class="d-flex justify-content-end gap-3 mt-2 mb-3 flex-wrap">
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">School Year:</span>
+      <select id="userAnnouncementAySelect" class="form-select form-select-sm no-arrow" style="width:auto; min-width:140px;" disabled></select>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">Semester:</span>
+      <select id="userAnnouncementActiveYearSelect" class="form-select form-select-sm no-arrow" style="width:auto; min-width:110px;" disabled></select>
+    </div>
+  </div>
+
+  <hr class="mt-0 mb-3">
+
+  <div class="container mt-4">
+    <div class="row g-3">
+      <div class="col-12">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+
+            <!-- Search + View Toggle -->
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+              <div class="search-wrap w-100 w-sm-50">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text"><i class="bi bi-search"></i></span>
+                  <input type="text"
+                         class="form-control"
+                         id="userAnnouncementSearch"
+                         placeholder="Search announcements">
+                </div>
+              </div>
+              
+              <!-- View Toggle -->
+              <div class="btn-group btn-group-sm view-toggle-group" role="group">
+                <button type="button" class="btn btn-outline-secondary view-toggle-btn active" data-view="cards">
+                  <i class="bi bi-grid-3x3-gap"></i> Cards
+                </button>
+                <button type="button" class="btn btn-outline-secondary view-toggle-btn" data-view="table">
+                  <i class="bi bi-list"></i> Table
+                </button>
+              </div>
+            </div>
+
+            <!-- Cards View -->
+            <div id="UserAnnouncementCardsView">
+              <div class="row g-3" id="userAnnouncementCardsContainer"></div>
+            </div>
+
+            <!-- Table View -->
+            <div class="table-responsive-sm d-none" id="UserAnnouncementTableView">
+              <table class="table table-bordered table-striped w-100 align-middle">
+                <thead class="table-dark">
+                  <tr>
+                    <th style="width:80px;">ID</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Audience</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th style="min-width:100px;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="userAnnouncementTableBody"></tbody>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div class="small text-muted" id="UserAnnouncementPaginationInfo"></div>
+              <nav id="UserAnnouncementPagination"></nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

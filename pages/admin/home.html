@@ -1,0 +1,370 @@
+<!-- super-admin home dashboard panel -->
+<head>
+  <title>Home</title>
+  <style>
+    /* Optional: Make the welcome card stand out */
+    .welcome-card {
+      background-color: #ffffff;
+      border-left: 10px solid #28a745; /* Green accent */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .academicYear {
+      background-color: #211E56;
+      border-left: 10px solid #F5AA1C;
+    }
+
+    /* KPI cards base */
+    .dashboard-kpi-card {
+      border: none;
+      border-radius: 0.5rem;
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    /* KPI color variants */
+    .kpi-card-orgs {
+      background: linear-gradient(135deg, #211E56, #3f4ba8);
+    }
+    .kpi-card-fees {
+      background: linear-gradient(135deg, #0d6efd, #5a9bff);
+    }
+    .kpi-card-credits {
+      background: linear-gradient(135deg, #198754, #32c875);
+    }
+    .kpi-card-debits {
+      background: linear-gradient(135deg, #dc3545, #f46b7b);
+    }
+
+    .dashboard-kpi-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+    }
+
+    .dashboard-kpi-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .small-label {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    .kpi-icon-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+
+    .kpi-icon-circle i {
+      font-size: 1.1rem;
+    }
+
+    /* Make KPI cards equal height */
+    .kpi-col {
+      display: flex;
+    }
+    .dashboard-kpi-card {
+      width: 100%;
+    }
+
+    /* Calendar */
+    .calendar-grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    .calendar-grid th,
+    .calendar-grid td {
+      text-align: center;
+      padding: 4px;
+    }
+    .calendar-grid th {
+      font-weight: 600;
+      color: #6c757d;
+    }
+    .calendar-grid td span {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      border-radius: 50%;
+    }
+    .calendar-today span {
+      background-color: #211E56;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Charts: avoid super tall stretch */
+    .chart-card {
+      height: 60%;
+    }
+
+    /* LOWER chart height so it's not super stretched */
+    .chart-wrapper {
+      position: relative;
+      height: 170px; /* was 220px, now shorter */
+      max-height: 220px;
+    }
+
+    .chart-wrapper canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* Make top row columns stretch to same height */
+    .top-row-stretch {
+      align-items: stretch;
+    }
+
+    .top-left-stack {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .top-left-stack .card {
+      /* split space between welcome + AY */
+      flex: 1 1 0;
+    }
+
+    .top-left-stack .welcome-card {
+      margin-bottom: 0.75rem;
+    }
+
+    .no-scroll {
+    overflow: hidden !important;
+    height: auto !important;
+    }
+
+    #homePage h1 {
+      letter-spacing: 0.08em;
+      font-size: 1.6rem; 
+    }
+
+    /* Ensure both chart cards have same height */
+    .chart-row-equal-height {
+      display: flex;
+      align-items: stretch;
+    }
+    
+    .chart-row-equal-height > div {
+      display: flex;
+    }
+    
+    .chart-row-equal-height .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .chart-row-equal-height .card-body {
+      flex: 1;
+    }
+
+</style>
+</head>
+
+<div id="homePage" class="container-fluid no-scroll">
+  <!-- Home content -->
+  <h1 class="mb-3">HOME</h1>
+  <hr class="mt-0 mb-3">
+
+  <!-- Top row: Welcome + Academic Year (left) and Calendar (right) -->
+  <div class="row g-3 mb-3 top-row-stretch">
+    <!-- Left: Welcome + AY stacked, same total height as calendar -->
+    <div class="col-lg-8 d-flex">
+      <div class="w-100 top-left-stack">
+        <!-- Welcome message -->
+        <div class="card welcome-card" style="min-width: 300px;">
+            <div class="card-body">
+                <h4 class="mb-1">
+                Welcome back, <span id="welcomeUsername">User</span>!
+                </h4>
+
+                <p class="text-muted mb-1">
+                <i class="bi bi-calendar me-1"></i> Today: 
+                <span id="welcomeToday">—</span>
+                </p>
+
+                <p class="small text-muted mb-0">
+                Stay updated with the latest organization activities and financial movements.
+                </p>
+            </div>
+            </div>
+
+        <!-- Current Academic Year highlight -->
+        <div id="currentAcademicYearDisplay" style="min-width: 320px;">
+          <div class="card academicYear shadow-sm border-0 h-100">
+            <div class="card-body d-flex justify-content-between align-items-center text-white academicYear">
+              <!-- Left side (text) -->
+              <div>
+                <h6 class="mb-1 text-uppercase fw-bold" style="color: #F5AA1C;">
+                  Current Academic Year
+                </h6>
+                <h3 class="mb-2" id="displayAcademicYear">0000 - 0000</h3>
+                <p class="mb-2 mb-lg-0">
+                  <strong>Active Year:</strong>
+                  <span id="displayActiveYear" class="badge bg-success">----</span>
+                </p>
+                <div class="small text-white-50 mt-1">
+                  <span id="displaySemesterLabel">—</span>
+                </div>
+              </div>
+
+              <!-- Right side (image) -->
+              <div>
+                <img src="assets/images/academic-year.png" alt="Academic Year"
+                     style="height: 80px; object-fit: contain; margin-right: 30px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Calendar -->
+    <div class="col-lg-4 d-flex">
+      <div class="card shadow-sm mb-3 h-100 w-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-calendar-event me-1"></i> Calendar</span>
+          <span class="small text-muted" id="calendarMonthLabel">Month YYYY</span>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <table class="calendar-grid mb-2">
+            <thead>
+              <tr>
+                <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
+              </tr>
+            </thead>
+            <tbody id="dashboardCalendarBody">
+              <!-- Filled by JS -->
+            </tbody>
+          </table>
+          <div class="small text-muted mt-auto">
+            Today: <span id="calendarTodayLabel">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI row (above charts) -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-3 col-sm-6 kpi-col">
+      <div class="card dashboard-kpi-card kpi-card-orgs">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="dashboard-kpi-title">Active Organizations</div>
+              <div class="dashboard-kpi-value" id="kpiActiveOrgs">0</div>
+            </div>
+            <div class="kpi-icon-circle">
+              <i class="bi bi-people-fill"></i>
+            </div>
+          </div>
+          <div class="small-label mt-2">Accredited / Reaccredited</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 kpi-col">
+      <div class="card dashboard-kpi-card kpi-card-fees">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="dashboard-kpi-title">Total Org Fees</div>
+              <div class="dashboard-kpi-value" id="kpiOrgFeesTotal">₱0.00</div>
+            </div>
+            <div class="kpi-icon-circle">
+              <i class="bi bi-cash-coin"></i>
+            </div>
+          </div>
+          <div class="small-label mt-2">Collected this Academic Year</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 kpi-col">
+      <div class="card dashboard-kpi-card kpi-card-credits">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="dashboard-kpi-title">Event Credits</div>
+              <div class="dashboard-kpi-value" id="kpiEventCredits">₱0.00</div>
+            </div>
+            <div class="kpi-icon-circle">
+              <i class="bi bi-piggy-bank"></i>
+            </div>
+          </div>
+          <div class="small-label mt-2">Total funds received (AY)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 kpi-col">
+      <div class="card dashboard-kpi-card kpi-card-debits">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="dashboard-kpi-title">Event Expenses</div>
+              <div class="dashboard-kpi-value" id="kpiEventDebits">₱0.00</div>
+            </div>
+            <div class="kpi-icon-circle">
+              <i class="bi bi-receipt"></i>
+            </div>
+          </div>
+          <div class="small-label mt-2">Total expenses (AY)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts row - BOTH CARDS SIDE BY SIDE -->
+  <div class="row g-3 mb-4 chart-row-equal-height">
+    <!-- Event Funds Chart (Left side - 7 columns) -->
+    <div class="col-lg-7 d-flex">
+      <div class="card shadow-sm chart-card w-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-receipt-cutoff me-1"></i> Event Funds Overview</span>
+          <span class="small text-muted" id="eventChartSubtitle">Credits vs Expenses</span>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrapper">
+            <canvas id="eventFundsChart"></canvas>
+          </div>
+          <div class="small text-muted mt-2">
+            Top events based on total funds received and expenses recorded.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Events List (Right side - 5 columns) -->
+    <div class="col-lg-5 d-flex">
+      <div class="card shadow-sm w-100">
+        <div class="card-header">
+          <i class="bi bi-activity me-1"></i> Events with Funds (Current AY)
+        </div>
+        <div class="card-body d-flex flex-column">
+          <ul class="list-group list-group-flush small flex-grow-1" id="dashboardTopEvents">
+            <!-- JS fills top events here -->
+          </ul>
+          <div class="small text-muted mt-2" id="dashboardTopEventsNote">
+            Data based on event credits and debits for the current academic year.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

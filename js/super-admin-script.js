@@ -1,3 +1,4 @@
+
 window.addEventListener('load', () => {
     const intro = document.getElementById('intro');
 
@@ -14,13 +15,13 @@ window.addEventListener('load', () => {
     });
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Toggle sidebar visibility
-    const toggler = document.querySelector(".toggler-btn");
+   // Toggle sidebar visibility
+const toggler = document.querySelector(".toggler-btn");
     if (toggler) {
         toggler.addEventListener("click", function () {
             document.querySelector("#sidebar").classList.toggle("collapsed");
         });
-    }
+}
 
     // Set the default section to be visible
     showSection('home');
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Organization
         'dept-org-fee': 'pages/super-admin/dept-org-fee.html',
         'general-org-fee': 'pages/super-admin/general-org-fee.html',
-        'clubs': 'pages/super-admin/clubs.html',
+        'records': 'pages/super-admin/records.html',
 
         // Others
         'academic-year': 'pages/super-admin/academic-year.html',
@@ -140,23 +141,26 @@ const logOutBtn = document.getElementById("logOutBtn");
 
 //logout clears user info
     function logoutUser() {
-    fetch('php/logout.php')
-        .then(res => res.json())
-        .then(data => {
-        if (data.success) {
-            // Clear all localStorage keys related to user
-            localStorage.removeItem('username');
-            localStorage.removeItem('role');
-            localStorage.removeItem('profile_picture');
-            localStorage.removeItem('user_id');
+    fetch('php/logout.php', {
+        method: 'GET',
+        credentials: 'include'
+    })
+        .then(() => {
+        // The PHP already redirected the session,
+        // so we do the front-end redirect manually.
+        
+        localStorage.removeItem('username');
+        localStorage.removeItem('role');
+        localStorage.removeItem('profile_picture');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('id_number');
 
-            window.location.href = 'login.html'; // Redirect to login page
-        }
+        // Force navigation to login page
+        window.location.href = 'index.html';
         })
-        .catch(err => {
-        console.error('Logout failed:', err);
-        });
+        .catch(err => console.error('Logout failed:', err));
     }
+
 
       const fullName = localStorage.getItem('username');
       const role = localStorage.getItem('role');
@@ -166,11 +170,9 @@ const logOutBtn = document.getElementById("logOutBtn");
       document.querySelector('.rank').textContent = role ?? 'Unknown';
   
       if (profilePic) {
-        document.querySelector('.profile-picture').src = `assets/uploads/${profilePic}` ?? 'assets/profile.png';
-        document.querySelector('.profile-icon').src = `assets/uploads/${profilePic}` ?? 'assets/profile.png'; 
+        document.querySelector('.profile-picture').src = `${profilePic}` ?? 'assets/images/profile.png';
+        document.querySelector('.profile-icon').src = `${profilePic}` ?? 'assets/images/profile.png'; 
       }
-
 });
-
-
-
+ console.log(localStorage.getItem('department'));
+//toggler-btn

@@ -1,0 +1,81 @@
+<!-- Organization Fees (User View) -->
+<div class="container-fluid" id="user-organization-fees">
+  <!-- Top header -->
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <div class="d-flex flex-column">
+      <h1 class="mb-1">ORGANIZATION FEES</h1>
+      <small class="text-muted">
+        View your required organization / department fees and their payment status.
+      </small>
+    </div>
+    <div class="text-end small">
+      <div class="mb-1">
+        <span class="text-muted">School Year:</span>
+        <span id="userOrgFeeCurrentSchoolYear" class="fw-semibold">—</span>
+      </div>
+      <div class="d-flex gap-1 justify-content-end">
+        <select
+          id="userOrgFeeAySelect"
+          class="form-select form-select-sm w-auto"
+          aria-label="Select Academic Year"
+        ></select>
+        <select
+          id="userOrgFeeActiveYearSelect"
+          class="form-select form-select-sm w-auto"
+          aria-label="Select Semester"
+        ></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search + Filter Tabs -->
+  <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+    <div class="flex-grow-1" style="min-width: 240px;">
+      <div class="input-group input-group-sm">
+        <span class="input-group-text bg-light border-end-0">
+          <i class="bi bi-search"></i>
+        </span>
+        <input
+          type="text"
+          id="userOrgFeeSearch"
+          class="form-control border-start-0"
+          placeholder="Search fee title, organization, or description..."
+        />
+      </div>
+    </div>
+
+    <ul class="nav nav-pills nav-pills-sm" id="userOrgFeeFilterTabs">
+      <li class="nav-item">
+        <button class="nav-link active" data-filter="all" type="button">
+          All
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-filter="unpaid" type="button">
+          Unpaid
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-filter="paid" type="button">
+          Paid
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Cards -->
+  <div class="row" id="userOrgFeeCardsContainer"></div>
+
+  <!-- Pagination -->
+  <div
+    class="d-flex flex-wrap justify-content-between align-items-center mt-3 gap-2"
+  >
+    <div
+      id="UserOrgFeePaginationInfo"
+      class="small text-muted"
+    >
+      <!-- info -->
+    </div>
+    <nav id="UserOrgFeePagination"></nav>
+  </div>
+</div>

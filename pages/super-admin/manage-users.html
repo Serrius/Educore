@@ -1,0 +1,864 @@
+<head>
+  <title>Manage Users</title>
+  <style>
+    /* Page-specific helpers only, keep it lightweight */
+    #manage-users-page h1 {
+      letter-spacing: 0.08em;
+      font-size: 1.6rem;
+    }
+    #manage-users-page .page-subtitle {
+      font-size: 0.8rem;
+    }
+    #manage-users-page .nav-tabs .nav-link {
+      font-weight: 500;
+      font-size: 12px;
+    }
+    #manage-users-page .nav-tabs .nav-link i {
+      margin-right: 0.35rem;
+    }
+    #manage-users-page .search-wrap {
+      max-width: 340px;
+    }
+    #manage-users-page .table thead th {
+      white-space: nowrap;
+    }
+    #manage-users-page .badge {
+      font-size: 0.75rem;
+    }
+    /* Optional: highlight unread pending registration rows (JS already adds .row-unread) */
+    #manage-users-page tr.row-unread {
+      background-color: #fff8e1;
+    }
+
+    /* small red dot at the left of the name */
+    .unread-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #dc3545; /* Bootstrap danger red */
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    
+  </style>
+</head>
+
+<div class="container-fluid" id="manage-users-page">
+  <!-- Page header -->
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <div class="d-flex flex-column">
+      <h1 class="mb-0 text-uppercase">MANAGE USERS</h1>
+      <span class="page-subtitle text-muted" style="display: none;">
+        Review registrations, manage student records, and configure admin accounts.
+      </span>
+    </div>
+
+    <!-- Right side info / placeholder for consistency -->
+    <div class="text-end small" style="display: none;">
+      <div class="text-muted">User &amp; account management panel</div>
+    </div>
+  </div>
+
+  <hr class="mt-0 mb-3">
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body pb-2">
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs" id="statusTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" data-bs-toggle="tab" href="#pending-students" role="tab" aria-selected="true">
+            <i class="bi bi-hourglass-split"></i> Pending Students
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" href="#active-students" role="tab" aria-selected="false">
+            <i class="bi bi-person-check"></i> Active Students
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" href="#manage-students" role="tab" aria-selected="false">
+            <i class="bi bi-mortarboard"></i> Manage Students
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" href="#archived-students" role="tab" aria-selected="false">
+            <i class="bi bi-archive"></i> Archived Students
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" href="#manage-admin" role="tab" aria-selected="false">
+            <i class="bi bi-shield-lock"></i> Manage Admin
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" href="#archived-admins" role="tab" aria-selected="false">
+            <i class="bi bi-archive-fill"></i> Archived Admins
+          </a>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content mt-3">
+
+        <!-- ================= PENDING STUDENTS ================= -->
+        <div class="tab-pane fade show active" id="pending-students" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text"
+                       class="form-control"
+                       id="pendingStudentSearch"
+                       placeholder="Search by ID, name, course, or school year">
+              </div>
+            </div>
+
+            <!-- Bulk Actions: hidden until at least 1 checkbox is selected -->
+            <div id="pending-bulk-actions" class="btn-group btn-group-sm d-none">
+              <button class="btn btn-primary" id="activateSelected">
+                <i class="bi bi-check2-circle"></i> Activate Selected
+              </button>
+              <button class="btn btn-outline-warning" id="deleteSelected">
+                <i class="bi bi-archive"></i> Archive Selected
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table id="pendingStudentTable" class="table table-bordered table-striped table-hover align-middle w-100">
+              <thead class="table-dark">
+                <tr>
+                  <th class="text-center" style="width:36px;">
+                    <input type="checkbox" id="selectAllPending">
+                  </th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Course</th>
+                  <th>School Year</th>
+                  <th>Status</th>
+                  <th style="min-width:140px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ================= ACTIVE STUDENTS ================= -->
+        <div class="tab-pane fade" id="active-students" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text"
+                       class="form-control"
+                       id="activeStudentSearch"
+                       placeholder="Search active students...">
+              </div>
+            </div>
+
+            <!-- Bulk actions (hidden until selection) -->
+            <div id="active-bulk-actions" class="btn-group btn-group-sm d-none">
+              <button class="btn btn-warning" id="deactivateSelected">
+                <i class="bi bi-slash-circle"></i> Deactivate Selected
+              </button>
+              <button class="btn btn-outline-warning" id="deleteActiveSelected" title="Archive students">
+                <i class="bi bi-archive"></i> Archive Selected
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table id="activeStudentTable" class="table table-bordered table-striped table-hover align-middle w-100">
+              <thead class="table-dark">
+                <tr>
+                  <th class="text-center" style="width:36px;">
+                    <input type="checkbox" id="selectAllActive">
+                  </th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Course</th>
+                  <th>School Year</th>
+                  <th>Status</th>
+                  <th style="min-width:160px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ================= MANAGE STUDENTS ================= -->
+        <div class="tab-pane fade" id="manage-students" role="tabpanel">
+          <div class="d-flex justify-content-between mb-3 align-items-center flex-wrap gap-2">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text"
+                       class="form-control"
+                       id="manageStudentSearch"
+                       placeholder="Search all students...">
+              </div>
+            </div>
+
+            <!-- Default actions (shown when nothing is selected) -->
+            <div class="btn-group btn-group-sm" id="manage-default-actions">
+              <button class="btn btn-success" id="add-student" data-bs-toggle="modal" data-bs-target="#addStudentModal">
+                <i class="bi bi-person-plus"></i> Add Student
+              </button>
+
+              <label class="btn btn-outline-secondary mb-0" title="Import XML">
+                <i class="bi bi-download"></i> Import XML
+                <input type="file" id="importManageStudentsXML" accept=".xml" hidden>
+              </label>
+
+              <button class="btn btn-outline-primary" id="exportManageStudentsXML" title="Export selected to XML">
+                <i class="bi bi-upload"></i> Export XML
+              </button>
+            </div>
+
+            <!-- Bulk actions (shown when one or more rows are selected) -->
+            <div class="btn-group btn-group-sm d-none" id="manage-bulk-actions">
+              <button class="btn btn-outline-primary" id="exportManageStudentsXML" title="Export selected to XML">
+                <i class="bi bi-upload"></i> Export XML
+              </button>
+              <button class="btn btn-outline-warning" id="deleteManageSelected">
+                <i class="bi bi-archive"></i> Archive Selected
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table id="manageStudentTable" class="table table-bordered table-striped table-hover align-middle w-100">
+              <thead class="table-dark">
+                <tr>
+                  <th class="text-center" style="width:36px;">
+                    <input type="checkbox" id="selectAllManage">
+                  </th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Course</th>
+                  <th>School Year</th>
+                  <th>Status</th>
+                  <th class="text-end" style="min-width: 90px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ================= ARCHIVED STUDENTS ================= -->
+        <div class="tab-pane fade" id="archived-students" role="tabpanel">
+          <div class="d-flex justify-content-between mb-3 align-items-center flex-wrap gap-2">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text"
+                       class="form-control"
+                       id="archivedStudentSearch"
+                       placeholder="Search archived students...">
+              </div>
+            </div>
+
+            <!-- Bulk actions -->
+            <div class="btn-group btn-group-sm d-none" id="archivedStudentBulkActions">
+              <button class="btn btn-outline-primary" id="restoreArchivedStudents">
+                <i class="bi bi-arrow-counterclockwise"></i> Restore Selected
+              </button>
+              <!-- Optional: permanent delete button if you implement it later -->
+              <!--
+              <button class="btn btn-outline-danger" id="deleteArchivedStudentsPermanent">
+                <i class="bi bi-x-circle"></i> Delete Permanently
+              </button>
+              -->
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table id="archivedStudentTable" class="table table-bordered table-striped table-hover align-middle w-100">
+              <thead class="table-dark">
+                <tr>
+                  <th class="text-center" style="width:36px;">
+                    <input type="checkbox" id="selectAllArchivedStudents">
+                  </th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Course</th>
+                  <th>School Year</th>
+                  <th>Status</th>
+                  <th class="text-end" style="min-width: 120px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ================= MANAGE ADMIN (STAFF) ================= -->
+        <div class="tab-pane fade" id="manage-admin" role="tabpanel">
+          <div class="d-flex justify-content-between mb-3 align-items-center flex-wrap gap-2">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text"
+                       class="form-control"
+                       id="manageAdminSearch"
+                       placeholder="Search admins by name, email, or role">
+              </div>
+            </div>
+
+            <!-- Default bar (no selection) -->
+            <div class="btn-group btn-group-sm" id="adminDefaultActions">
+              <button class="btn btn-success" id="add-admin" data-bs-toggle="modal" data-bs-target="#addAdminModal">
+                <i class="bi bi-person-plus-fill"></i> Add Admin
+              </button>
+
+              <label class="btn btn-outline-secondary mb-0" title="Import XML">
+                <i class="bi bi-download"></i> Import XML
+                <input type="file" id="importAdminsXML" accept=".xml" hidden>
+              </label>
+            </div>
+
+            <!-- Bulk bar (when one or more admins selected) -->
+            <div class="btn-group btn-group-sm d-none" id="adminBulkActions">
+              <button class="btn btn-outline-primary" id="exportAdminsXML" title="Export selected to XML">
+                <i class="bi bi-upload"></i> Export XML
+              </button>
+              <button class="btn btn-outline-warning" id="deleteSelectedAdmins">
+                <i class="bi bi-archive"></i> Archive Selected
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table id="adminTable" class="table table-bordered table-striped table-hover align-middle w-100">
+              <thead class="table-dark">
+                <tr>
+                  <th class="text-center" style="width:36px;">
+                    <input type="checkbox" id="selectAllAdmins">
+                  </th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th class="text-end" style="min-width: 90px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ================= ARCHIVED ADMINS ================= -->
+        <div class="tab-pane fade" id="archived-admins" role="tabpanel">
+          <div class="d-flex justify-content-between mb-3 align-items-center flex-wrap gap-2">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text"
+                       class="form-control"
+                       id="archivedAdminSearch"
+                       placeholder="Search archived admins...">
+              </div>
+            </div>
+
+            <div class="btn-group btn-group-sm d-none" id="archivedAdminBulkActions">
+              <button class="btn btn-outline-primary" id="restoreArchivedAdmins">
+                <i class="bi bi-arrow-counterclockwise"></i> Restore Selected
+              </button>
+              <!-- Optional permanent delete later -->
+              <!--
+              <button class="btn btn-outline-danger" id="deleteArchivedAdminsPermanent">
+                <i class="bi bi-x-circle"></i> Delete Permanently
+              </button>
+              -->
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table id="archivedAdminTable" class="table table-bordered table-striped table-hover align-middle w-100">
+              <thead class="table-dark">
+                <tr>
+                  <th class="text-center" style="width:36px;">
+                    <input type="checkbox" id="selectAllArchivedAdmins">
+                  </th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th class="text-end" style="min-width: 120px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <!-- /tab-content -->
+    </div>
+  </div>
+</div>
+
+<!-- View User Modal (to be added to your main HTML layout) -->
+<div class="modal fade" id="viewUserModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">User Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-3 text-center mb-3">
+            <img id="viewUserAvatar" src="assets/images/image-placeholder.svg" 
+                 class="img-fluid rounded-circle border" style="width:120px;height:120px;object-fit:cover;">
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">Name</label>
+                <div class="fw-bold" id="viewUserName">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">User ID</label>
+                <div class="fw-bold" id="viewUserId">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">ID Number</label>
+                <div class="fw-bold" id="viewUserIdNumber">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">Email</label>
+                <div class="fw-bold" id="viewUserEmail">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">User Type</label>
+                <div class="fw-bold" id="viewUserUserType">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">Role</label>
+                <div class="fw-bold" id="viewUserRole">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">Department/Course</label>
+                <div class="fw-bold" id="viewUserDepartment">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">School Year</label>
+                <div class="fw-bold" id="viewUserSchoolYear">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">Year Level</label>
+                <div class="fw-bold" id="viewUserYear">—</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label small text-muted mb-1">Status</label>
+                <div>
+                  <span class="badge" id="viewUserStatusBadge">—</span>
+                </div>
+              </div>
+              <div class="col-md-12 mb-2">
+                <label class="form-label small text-muted mb-1">Account Created</label>
+                <div class="fw-bold" id="viewUserCreatedAt">—</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-outline-info" id="viewUserResetPasswordBtn">
+          <i class="bi bi-key"></i> Reset Password
+        </button>
+        <button class="btn btn-primary" id="viewUserPrimaryBtn">Activate</button>
+        <button class="btn btn-outline-warning" id="viewUserDeleteBtn">
+          <i class="bi bi-archive"></i> Archive
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Student Modal -->
+<div class="modal fade" id="addStudentModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Add Student</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form id="addStudentForm" class="modal-body">
+        <!-- Split name fields -->
+        <div class="row">
+          <div class="col-md-4 mb-2">
+            <label class="form-label">First Name</label>
+            <input class="form-control" name="first_name" required>
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Middle Name (optional)</label>
+            <input class="form-control" name="middle_name">
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Last Name</label>
+            <input class="form-control" name="last_name" required>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Suffix (optional)</label>
+          <input class="form-control" name="suffix" placeholder="Jr., III, etc.">
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">ID Number</label>
+          <input class="form-control" name="id_number" required>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Email</label>
+          <input class="form-control" name="email">
+        </div>
+
+        <!-- Course (from courses table; value = abbreviation) -->
+        <div class="mb-2">
+          <label class="form-label">Course</label>
+          <select class="form-select" name="department" id="addDepartment" required>
+            <option value="" disabled selected>Loading courses…</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <!-- School Year (active academic year) -->
+          <div class="col-md-6 mb-2">
+            <label class="form-label">School Year</label>
+            <select class="form-select" name="school_year" id="addSchoolYear" required>
+              <option value="" disabled selected>Loading…</option>
+            </select>
+          </div>
+
+          <!-- Year level -->
+          <div class="col-md-6 mb-2">
+            <label class="form-label">Year Level</label>
+            <select class="form-select" name="year" id="addYearLevel" required>
+              <option value="First Year">1st Year</option>
+              <option value="Second Year">2nd Year</option>
+              <option value="Third Year">3rd Year</option>
+              <option value="Fourth Year">4th Year</option>
+              <option value="Fifth Year">5th Year</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Status</label>
+          <select class="form-select" name="status" id="addStatus">
+            <option>Active</option>
+            <option selected>Inactive</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-2" style="display: none;">
+            <label class="form-label">Role</label>
+            <select class="form-select" name="role" id="addRole">
+              <option selected>non-admin</option>
+              <option>treasurer</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Optional: set a temporary password (default: id_number if left blank) -->
+        <div class="mb-2">
+          <label class="form-label">Temporary Password (optional)</label>
+          <input class="form-control" name="password" placeholder="Leave blank to use ID Number">
+        </div>
+      </form>
+
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-success" id="saveAddStudentBtn">Add Student</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Student Modal -->
+<div class="modal fade" id="editStudentModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Edit Student</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form id="editStudentForm" class="modal-body">
+        <input type="hidden" name="id">
+
+        <!-- Split name fields -->
+        <div class="row">
+          <div class="col-md-4 mb-2">
+            <label class="form-label">First Name</label>
+            <input class="form-control" name="first_name" required>
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Middle Name (optional)</label>
+            <input class="form-control" name="middle_name">
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Last Name</label>
+            <input class="form-control" name="last_name" required>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Suffix (optional)</label>
+          <input class="form-control" name="suffix" placeholder="Jr., III, etc.">
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">ID Number</label>
+          <input class="form-control" name="id_number">
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Email</label>
+          <input class="form-control" name="email">
+        </div>
+
+        <!-- Course (from courses table) -->
+        <div class="mb-2">
+          <label class="form-label">Course</label>
+          <select class="form-select" name="department" id="editDepartment" required>
+            <option value="" disabled selected>Loading courses…</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <!-- School Year (force active AY) -->
+          <div class="col-md-6 mb-2">
+            <label class="form-label">School Year</label>
+            <select class="form-select" name="school_year" id="editSchoolYear" required>
+              <option value="" disabled selected>Loading…</option>
+            </select>
+          </div>
+
+          <!-- Year level -->
+          <div class="col-md-6 mb-2">
+            <label class="form-label">Year Level</label>
+            <select class="form-select" name="year" id="editYearLevel" required>
+              <option value="First Year">1st Year</option>
+              <option value="Second Year">2nd Year</option>
+              <option value="Third Year">3rd Year</option>
+              <option value="Fourth Year">4th Year</option>
+              <option value="Fifth Year">5th Year</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Status</label>
+          <select class="form-select" name="status">
+            <option>Active</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-2" style="display: none;">
+            <label class="form-label">Role</label>
+            <select class="form-select" name="role">
+              <option>non-admin</option>
+              <option>treasurer</option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" id="saveEditStudentBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Admin Modal -->
+<div class="modal fade" id="addAdminModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Add Admin</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form id="addAdminForm" class="modal-body">
+        <!-- user_type enforced as staff server-side; password = hash(id_number) -->
+
+        <!-- Split name fields -->
+        <div class="row">
+          <div class="col-md-4 mb-2">
+            <label class="form-label">First Name</label>
+            <input class="form-control" name="first_name" required>
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Middle Name (optional)</label>
+            <input class="form-control" name="middle_name">
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Last Name</label>
+            <input class="form-control" name="last_name" required>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Suffix (optional)</label>
+          <input class="form-control" name="suffix" placeholder="Jr., III, etc.">
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">ID Number</label>
+          <input class="form-control" name="id_number" required>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Email</label>
+          <input class="form-control" type="email" name="email" placeholder="optional">
+        </div>
+
+        <!-- Course to manage (chips/radios, values = course abbreviation) -->
+        <div class="mb-2">
+          <label class="form-label">Course to Manage</label>
+          <div id="adminCourseChips" class="d-flex flex-wrap gap-2">
+            <!-- populated by JS -->
+            <div class="text-muted small">Loading courses…</div>
+          </div>
+          <small class="text-muted d-block mt-1">
+            Select a course that this admin would manage.
+          </small>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <label class="form-label">Status</label>
+            <select class="form-select" name="status" id="addAdminStatus" required>
+              <option>Inactive</option>
+              <option>Active</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-2">
+            <label class="form-label d-block">Role</label>
+            <input class="form-control" value="admin" disabled>
+            <small class="text-muted">Admins are created with role <strong>admin</strong>.</small>
+          </div>
+        </div>
+      </form>
+
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" id="saveAddAdminBtn">Add Admin</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Admin Modal -->
+<div class="modal fade" id="editAdminModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Edit Admin</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form id="editAdminForm" class="modal-body">
+        <input type="hidden" name="id">
+
+        <!-- Split name fields -->
+        <div class="row">
+          <div class="col-md-4 mb-2">
+            <label class="form-label">First Name</label>
+            <input class="form-control" name="first_name" required>
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Middle Name (optional)</label>
+            <input class="form-control" name="middle_name">
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Last Name</label>
+            <input class="form-control" name="last_name" required>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Suffix (optional)</label>
+          <input class="form-control" name="suffix" placeholder="Jr., III, etc.">
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">ID Number</label>
+          <input class="form-control" name="id_number" required>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Email</label>
+          <input class="form-control" type="email" name="email" placeholder="optional">
+        </div>
+
+        <!-- Courses managed (chips, values = abbreviation) -->
+        <div class="mb-2">
+          <label class="form-label d-block">Courses to manage</label>
+          <div id="editAdminCourseChips" class="d-flex flex-wrap gap-2">
+            <!-- chips injected by JS -->
+          </div>
+          <div class="form-text">Pick exactly one course (required).</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <label class="form-label">Status</label>
+            <select class="form-select" name="status" id="editAdminStatus" required>
+              <option>Inactive</option>
+              <option>Active</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-2">
+            <label class="form-label d-block">Role</label>
+            <input class="form-control" id="editAdminRoleReadonly" value="admin" disabled>
+            <small class="text-muted">Admins keep role <strong>admin</strong> (not editable).</small>
+          </div>
+        </div>
+      </form>
+
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" id="saveEditAdminBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Confirm Action</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmDialogue">Are you sure?</p>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-outline-secondary" id="cancelBtn">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,279 @@
+<head>
+  <title>Event Expenses - Student View</title>
+  <style>
+    /* Make table headers/cells less dikit-dikit */
+    #student-event-expenses-page table th,
+    #student-event-expenses-page table td {
+      padding: 0.55rem 0.9rem;
+      vertical-align: middle;
+    }
+
+    /* Optional: keep headers readable */
+    #student-event-expenses-page table thead th {
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    h1 {
+      letter-spacing: 0.08em;
+      font-size: 1.6rem;
+    }
+
+    /* Student-specific styling */
+    .student-view-badge {
+      background-color: #17a2b8;
+      color: white;
+    }
+    
+    /* Hide all action buttons */
+    .action-button {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<div class="container-fluid" id="student-event-expenses-page">
+  <!-- Top header -->
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <div class="d-flex flex-column">
+      <h1 class="mb-0">GENERAL EVENT EXPENSES</h1>
+    </div>
+    <small class="text-muted" style="display: none;">View Deparment Expenses</small>
+    <div class="text-end small">
+      <span class="text-muted" style="display: none;">Current School Year:</span>
+      <span id="eeCurrentSchoolYear" class="badge bg-primary" style="display: none;">—</span>
+    </div>
+  </div>
+  <hr class="mt-0 mb-3">  
+
+  <!-- AY filters -->
+  <div class="d-flex justify-content-end gap-3 mt-2 flex-wrap">
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">School Year:</span>
+      <select
+        id="eeAySelect"
+        class="form-select form-select-sm"
+        style="width:auto; min-width:140px;"
+      ></select>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">Active Year:</span>
+      <select
+        id="eeActiveYearSelect"
+        class="form-select form-select-sm"
+        style="width:auto; min-width:110px;"
+      ></select>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0 mt-3">
+    <div class="card-body">
+      <!-- ================= LIST VIEW ================= -->
+      <div id="eeListView">
+        <!-- Top Row: Search only -->
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <input
+            type="text"
+            class="form-control"
+            style="max-width: 360px;"
+            id="eeSearch"
+            placeholder="Search events"
+          >
+          <!-- No add button for students -->
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="row g-3" id="eeCardsGrid">
+          <!-- JS injects .ee-event-card cols -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="text-center py-5 d-none" id="eeEmptyState">
+          <div class="mb-2">
+            <i class="bi bi-box-seam fs-1 text-secondary"></i>
+          </div>
+          <p class="text-muted mb-3">No events found.</p>
+          <p class="text-muted small">No events are available for you to view at the moment.</p>
+        </div>
+      </div>
+
+      <!-- ================= EVENT VIEW ================= -->
+      <div id="eeEventView" class="d-none">
+        <!-- Header with Back on the left -->
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <button class="btn btn-outline-secondary btn-sm" id="eeBackBtn">
+            <i class="bi bi-arrow-left"></i> Back
+          </button>
+          <h6 class="mb-0" id="eeEventHeaderTitle">Event Title</h6>
+          <span class="badge bg-secondary ms-2" id="eeEventStatus">Draft</span>
+          <div class="ms-auto small text-muted" id="eeEventMeta">Org · Date · SY</div>
+        </div>
+
+        <!-- Tabs: Overview, Funds(Credits), Expenses(Debit), Ledger -->
+        <ul class="nav nav-tabs" id="eeTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab-overview" data-bs-toggle="tab" data-bs-target="#pane-overview" type="button" role="tab">
+              Overview
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-funds" data-bs-toggle="tab" data-bs-target="#pane-funds" type="button" role="tab">
+              Funds (Credits)
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-expenses" data-bs-toggle="tab" data-bs-target="#pane-expenses" type="button" role="tab">
+              Expenses (Debit)
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-ledger" data-bs-toggle="tab" data-bs-target="#pane-ledger" type="button" role="tab">
+              Ledger
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content border-start border-end border-bottom p-3 bg-white rounded-bottom shadow-sm" id="eeTabContent">
+          <!-- Overview -->
+          <div class="tab-pane fade show active" id="pane-overview" role="tabpanel" aria-labelledby="tab-overview">
+            <div class="row g-3">
+              <div class="col-md-5">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="mb-2">
+                      <span class="text-muted small">Organization</span>
+                      <div id="ovOrg">—</div>
+                    </div>
+                    <div class="mb-2">
+                      <span class="text-muted small">Event Date</span>
+                      <div id="ovDate">—</div>
+                    </div>
+                    <div class="mb-2">
+                      <span class="text-muted small">School Year</span>
+                      <div id="ovYear">—</div>
+                    </div>
+                    <div class="mb-2">
+                      <span class="text-muted small">Active Academic Year</span>
+                      <div id="ovAY">—</div>
+                    </div>
+                    <div class="mb-2">
+                      <span class="text-muted small">Location</span>
+                      <div id="ovDesc">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <div class="text-muted small">Total Funds Received</div>
+                        <div class="fs-5" id="ovCredits">₱0.00</div>
+                      </div>
+                      <div class="text-end">
+                        <div class="text-muted small">Total Expenses</div>
+                        <div class="fs-5" id="ovDebits">₱0.00</div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="text-muted small">Remaining Balance</div>
+                      <div class="fs-5" id="ovBalance">₱0.00</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Funds (Credits) -->
+          <div class="tab-pane fade" id="pane-funds" role="tabpanel" aria-labelledby="tab-funds">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="mb-0">Funds Received</h6>
+              <!-- No add button for students -->
+            </div>
+            <div class="table-responsive border rounded">
+              <table class="table table-sm align-middle mb-0" id="fundsTable">
+                <thead class="table-light">
+                  <tr>
+                    <th>Date</th>
+                    <th>Source</th>
+                    <th>Notes</th>
+                    <th class="text-end">Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="fundsTbody">
+                  <tr><td colspan="4" class="text-center text-muted">No funds recorded yet.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Expenses (Debit) -->
+          <div class="tab-pane fade" id="pane-expenses" role="tabpanel" aria-labelledby="tab-expenses">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="mb-0">Expenses</h6>
+              <!-- No add button for students -->
+            </div>
+            <div class="table-responsive border rounded">
+              <table class="table table-sm align-middle mb-0" id="debitsTable">
+                <thead class="table-light">
+                  <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Notes</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-end">Unit Price</th>
+                    <th class="text-end">Amount</th>
+                    <th>Receipt #</th>
+                    <th>Receipt</th>
+                  </tr>
+                </thead>
+                <tbody id="debitsTbody">
+                  <tr><td colspan="8" class="text-center text-muted">No expenses recorded yet.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Ledger -->
+          <div class="tab-pane fade" id="pane-ledger" role="tabpanel" aria-labelledby="tab-ledger">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="mb-0">Ledger</h6>
+              <!-- No print button for students -->
+            </div>
+            <div class="table-responsive border rounded" id="ledgerPrintArea">
+              <table class="table table-sm align-middle mb-0" id="ledgerTable">
+                <thead class="table-light">
+                  <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th class="text-end">Credit</th>
+                    <th class="text-end">Debit</th>
+                    <th class="text-end">Reference</th>
+                    <th class="text-end">Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="ledgerTbody">
+                  <tr><td colspan="7" class="text-center text-muted">No ledger entries.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!-- /tab-content -->
+      </div><!-- /eeEventView -->
+    </div><!-- /.card-body -->
+  </div><!-- /.card -->
+</div>
+
+<!-- Helper toast (simplified) -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080; display: none;">
+  <div id="eeToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="eeToastMsg">Ready.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>

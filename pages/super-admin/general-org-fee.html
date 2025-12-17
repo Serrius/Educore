@@ -1,0 +1,426 @@
+<head>
+  <title>Manage General Org Fee</title>
+  <style>
+    /* Match manage-announcement / event-expenses read-only style */
+    #genReadOnlyBadge {
+      font-size: 0.75rem;
+    }
+    .disabled-action {
+      opacity: 0.4 !important;
+      pointer-events: none !important;
+    }
+
+    .gen-org-card{cursor:pointer;transition:transform .08s ease}
+    .gen-org-card:hover{transform:translateY(-2px)}
+    .badge-status{font-size:.8rem}
+    .tab-pane{padding-top:1rem}
+    .kpi{min-width:190px}
+    .org-name, .org-sub{display:block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+    @media print {
+      .no-print{display:none !important}
+      #genPrintArea{display:block !important}
+      .tab-pane{padding-top:0}
+      body{background:#fff}
+      .card{box-shadow:none;border:0}
+    }
+
+    @media (min-width: 992px){
+      #general-fees .filters-row .form-label.text-nowrap { white-space: nowrap; }
+      #general-fees .filters-row > [class*="col-"] { display:flex; flex-direction:column; }
+      #general-fees .filters-row .form-select, #general-fees .filters-row .btn { margin-top:auto; }
+    }
+
+    #general-fees .gen-org-card .card-body { overflow: hidden; }
+
+    /* Typeahead dropdowns */
+    .suggest-wrap { position: relative; }
+    #genTreasurerSuggest, #payerSuggest {
+      position: absolute;
+      left: 0; right: 0; top: 100%;
+      z-index: 20;
+      max-height: 260px;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<div id="general-fees" class="container-fluid">
+  <!-- Top header -->
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <div class="d-flex flex-column">
+      <h1 class="mb-0">GENERAL ORG FEES</h1>
+      <span id="genReadOnlyBadge" class="text-muted d-none">
+        <span class="badge bg-warning text-dark me-1">READ-ONLY</span>
+        Viewing another Academic Year / Semester
+      </span>
+      <small class="text-muted" style="display: none;">Manage campus-wide org fees, treasurers, payments, and reports for inclusive organizations.</small>
+    </div>
+    <div class="text-end small">
+      <div class="mb-1">
+        <span class="text-muted" style="display: none;">Module:</span>
+        <span class="badge bg-secondary" style="display: none;">Finance / Org Fees</span>
+      </div>
+      <div class="mb-1">
+        <span class="text-muted" style="display: none;">Current Academic Year:</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters row -->
+  <div class="d-flex justify-content-end gap-3 mt-2 flex-wrap no-print filters-row">
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">School Year:</span>
+      <select id="genAySpanSelect" class="form-select form-select-sm" style="width:auto; min-width:140px;"></select>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">Semester:</span>
+      <select id="genActiveYearSelect" class="form-select form-select-sm" style="width:auto; min-width:110px;"></select>
+    </div>
+    <button id="genRefreshBtn" class="btn btn-outline-secondary btn-sm" style="display: none;">
+      <i class="bi bi-arrow-repeat me-1"></i>Refresh
+    </button>
+  </div>
+
+  <!-- Main card -->
+  <div class="card shadow-sm border-0 mt-3">
+    <div class="card-body">
+      <!-- GRID VIEW -->
+      <div id="genGridView">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <input
+            id="genOrgSearch"
+            type="search"
+            class="form-control"
+            style="max-width: 420px;"
+            placeholder="Search inclusive organizations by name, abbreviation…"
+          >
+          <span class="text-muted small">
+            Select an organization card to manage its fee and payments.
+          </span>
+        </div>
+
+        <!-- Cards grid -->
+        <div id="genOrgGrid" class="row g-3"></div>
+
+        <!-- Empty state -->
+        <div id="genEmptyState" class="text-center text-muted py-5 d-none">
+          <div class="mb-2">
+            <i class="bi bi-box-seam fs-1 text-secondary"></i>
+          </div>
+          <p class="mb-1">No organizations for the selected academic year.</p>
+          <p class="small mb-0">Try changing the Academic Year filters or your search.</p>
+        </div>
+      </div>
+
+      <!-- DETAIL VIEW -->
+      <div id="genDetailView" class="d-none mt-2">
+        <!-- Header -->
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <button id="genBackToGrid" class="btn btn-outline-secondary btn-sm no-print">
+            <i class="bi bi-arrow-left"></i> Back
+          </button>
+          <div>
+            <h6 id="genOrgTitle" class="mb-0">—</h6>
+            <div class="text-muted small" id="genOrgSubtitle">—</div>
+          </div>
+          <span id="genOrgStatusBadge" class="badge text-bg-secondary badge-status ms-2">—</span>
+          <div class="ms-auto small text-muted">
+            AY: <span id="genHeaderAY">—</span>
+          </div>
+        </div>
+
+        <!-- FULL-WIDTH TABS (Org Info Removed) -->
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <!-- Tabs -->
+            <ul class="nav nav-pills no-print" id="genOrgTabs" role="tablist">
+              <li class="nav-item">
+                <button class="nav-link" style="display: none;" data-bs-toggle="pill" data-bs-target="#gen-tab-fee" type="button">
+                  <i class="bi bi-cash-coin me-1"></i>Set Fee & Treasurer
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#gen-tab-paid" type="button">
+                  <i class="bi bi-person-check me-1"></i>Paid Users
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#gen-tab-unpaid" type="button">
+                  <i class="bi bi-person-x me-1"></i>Unpaid Users
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#gen-tab-reports" type="button">
+                  <i class="bi bi-graph-up-arrow me-1"></i>Reports
+                </button>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <!-- Set Fee & Treasurer -->
+              <div class="tab-pane fade" id="gen-tab-fee">
+                <div id="genFeeAlert" class="alert alert-info d-none"></div>
+                <form id="genFeeForm" class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Fee Title</label>
+                    <input type="text" class="form-control" id="genFeeTitle" placeholder="General Org Fee" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">Amount</label>
+                    <input type="number" step="0.01" min="0" class="form-control" id="genFeeAmount" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">Currency</label>
+                    <input type="text" class="form-control" id="genFeeCurrency" value="PHP" maxlength="3">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Description (optional)</label>
+                    <textarea class="form-control" id="genFeeDescription" rows="2"></textarea>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label">Treasurer (Student)</label>
+                    <div class="suggest-wrap">
+                      <input type="text" class="form-control" id="genTreasurerName" placeholder="Search by name or ID… (Pick from suggestions)" autocomplete="off" required>
+                      <input type="hidden" id="genTreasurerIdHidden">
+                      <div id="genTreasurerSuggest" class="list-group shadow-sm d-none"></div>
+                    </div>
+                    <div class="form-text">
+                      Shown value is the student's name; the submission stores the student's <code>id_number</code>.
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <button id="genSaveFeeBtn" type="submit" class="btn btn-primary">
+                      <i class="bi bi-save me-1"></i>Save / Update
+                    </button>
+                  </div>
+                </form>
+
+                <div class="mt-4">
+                  <div class="small text-muted">Current fee for this org &amp; semester:</div>
+                  <div id="genCurrentFeeSummary" class="mt-1">—</div>
+                </div>
+              </div>
+
+              <!-- Paid Users -->
+              <div class="tab-pane fade show active" id="gen-tab-paid">
+                <div class="d-flex flex-wrap gap-2 align-items-center mb-2 no-print">
+                  <div class="input-group" style="max-width:280px">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input id="genPaidSearch" type="search" class="form-control" placeholder="Search paid by ID, receipt…">
+                  </div>
+                  <button id="genAddPaymentBtn" class="btn btn-outline-primary" style="display: none;">
+                    <i class="bi bi-plus-circle me-1"></i>Record Payment
+                  </button>
+                  <button id="genExportPaidBtn" type="button" class="btn btn-outline-secondary">
+                    <i class="bi bi-download me-1"></i>Export CSV
+                  </button>
+                  <button id="genPrintPaidBtn" type="button" class="btn btn-outline-secondary">
+                    <i class="bi bi-printer me-1"></i>Print Paid List
+                  </button>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-sm align-middle">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Receipt</th>
+                        <th>Payer ID</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Paid On</th>
+                        <th>Course</th>
+                        <th>School Year</th>
+                        <th>Year Level</th>
+                        <th class="no-print text-end">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="genPaidTbody">
+                      <tr><td colspan="10" class="text-muted">—</td></tr>
+                    </tbody>
+                  </table>
+                  <!-- PAGINATION CONTAINER FOR PAID TABLE -->
+                  <div id="genPaidPagination" class="d-flex justify-content-between align-items-center mt-3"></div>
+                </div>
+              </div>
+
+              <!-- Unpaid Users -->
+              <div class="tab-pane fade" id="gen-tab-unpaid">
+                <div class="small text-muted mb-2">
+                  Unpaid = All students (selected semester) without a confirmed payment for this fee.
+                </div>
+
+                <div class="d-flex flex-wrap gap-2 mb-2 no-print">
+                  <div class="input-group" style="max-width:280px">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input id="genUnpaidSearch" type="search" class="form-control" placeholder="Search by ID or name">
+                  </div>
+                  <button id="genExportUnpaidBtn" class="btn btn-outline-secondary">
+                    <i class="bi bi-download me-1"></i>Export CSV
+                  </button>
+                  <button id="genPrintUnpaidBtn" type="button" class="btn btn-outline-secondary">
+                    <i class="bi bi-printer me-1"></i>Print Unpaid List
+                  </button>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-sm align-middle">
+                    <thead class="table-light">
+                      <tr>
+                        <th>ID Number</th>
+                        <th>Name</th>
+                        <th>Year Level</th>
+                        <th>Course</th>
+                      </tr>
+                    </thead>
+                    <tbody id="genUnpaidTbody">
+                      <tr><td colspan="4" class="text-muted">—</td></tr>
+                    </tbody>
+                  </table>
+                  <!-- PAGINATION CONTAINER FOR UNPAID TABLE -->
+                  <div id="genUnpaidPagination" class="d-flex justify-content-between align-items-center mt-3"></div>
+                </div>
+              </div>
+
+              <!-- Reports -->
+              <div class="tab-pane fade" id="gen-tab-reports">
+                <div class="d-flex flex-wrap gap-3">
+                  <div class="card kpi">
+                    <div class="card-body">
+                      <div class="text-muted small">Paid Today</div>
+                      <div id="genKpiToday" class="fs-4">0</div>
+                    </div>
+                  </div>
+                  <div class="card kpi">
+                    <div class="card-body">
+                      <div class="text-muted small">Paid This Week</div>
+                      <div id="genKpiWeek" class="fs-4">0</div>
+                    </div>
+                  </div>
+                  <div class="card kpi">
+                    <div class="card-body">
+                      <div class="text-muted small">Paid This Month</div>
+                      <div id="genKpiMonth" class="fs-4">0</div>
+                    </div>
+                  </div>
+                  <div class="card kpi">
+                    <div class="card-body">
+                      <div class="text-muted small">Paid This Semester</div>
+                      <div id="genKpiSemester" class="fs-4">0</div>
+                    </div>
+                  </div>
+                  <div class="card kpi">
+                    <div class="card-body">
+                      <div class="text-muted small">Unpaid (All)</div>
+                      <div id="genKpiUnpaid" class="fs-4">0</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-3 no-print">
+                  <button id="genPrintBtn" class="btn btn-secondary">
+                    <i class="bi bi-printer me-1"></i>Print Reports
+                  </button>
+                </div>
+
+                <!-- Printable Summary -->
+                <div id="genPrintArea" class="mt-3 d-none">
+                  <h5 class="mb-1">General Org Fee — Receipt Summary</h5>
+                  <div class="text-muted mb-3">
+                    Org: <span id="genPrintOrgName">—</span> · AY <span id="genPrintAY">—</span> (Active: <span id="genPrintActive">—</span>)
+                  </div>
+
+                  <div class="table-responsive">
+                    <table class="table table-sm">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Date</th>
+                          <th>Receipt #</th>
+                          <th>Payer ID</th>
+                          <th>Name</th>
+                          <th class="text-end">Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody id="genPrintPaymentsBody">
+                        <tr><td colspan="5" class="text-muted">—</td></tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th colspan="4" class="text-end">Total</th>
+                          <th class="text-end" id="genPrintTotalAmount">PHP 0.00</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div> <!-- /tab-content -->
+          </div>
+        </div> <!-- /full-width card -->
+
+      </div> <!-- /genDetailView -->
+    </div> <!-- /card-body -->
+  </div> <!-- /card -->
+
+  <span style="height: 30px; visibility: hidden;">######</span>
+</div>
+
+<!-- Add Payment Modal -->
+<div class="modal fade" id="addPaymentModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-receipt-cutoff me-1"></i>Record Payment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="mb-3">
+          <label class="form-label">Student (payer)</label>
+          <div class="position-relative">
+            <input id="payerSearchName" type="text" class="form-control" placeholder="Search by name or ID… (Pick from suggestions)" autocomplete="off">
+            <input id="payerIdHidden" type="hidden">
+            <div id="payerSuggest" class="list-group shadow-sm position-absolute w-100 d-none" style="z-index:1056; max-height: 240px; overflow:auto;"></div>
+          </div>
+          <div class="form-text">
+            Shown value is the student's name; the submission stores the student's <code>id_number</code>.
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label">Amount</label>
+            <input id="payAmount" type="number" step="0.01" min="0" class="form-control" required readonly>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label">Method</label>
+            <select id="payMethod" class="form-select">
+              <option value="cash">Cash</option>
+              <option value="online">Online</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-3">
+        <label class="form-label">Receipt No.</label>
+        <input id="payNote" type="text" class="form-control" maxlength="255" required
+              pattern="[0-9\-]*" 
+              title="Only numbers and dashes are allowed">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button id="confirmAddPaymentBtn" class="btn btn-primary">
+          <i class="bi bi-check2-circle me-1"></i>Record Payment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--reports-->

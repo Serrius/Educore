@@ -1,0 +1,749 @@
+[14-Dec-2025 12:07:37 UTC] Web System Announcements Query:
+[14-Dec-2025 12:07:37 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 12:07:37 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 12:07:37 UTC] Found 1 announcements for user 2022303890
+[14-Dec-2025 12:07:37 UTC] Row 0: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 12:17:07 UTC] Web System Announcements Query:
+[14-Dec-2025 12:17:07 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 12:17:07 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 12:17:07 UTC] Found 1 announcements for user 2022303890
+[14-Dec-2025 12:17:07 UTC] Row 0: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 12:29:50 UTC] Web System Announcements Query:
+[14-Dec-2025 12:29:50 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 12:29:50 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 12:29:50 UTC] Found 1 announcements for user 2022303890
+[14-Dec-2025 12:29:50 UTC] Row 0: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 12:30:03 UTC] Web System Announcements Query:
+[14-Dec-2025 12:30:03 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 12:30:03 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 12:30:03 UTC] Found 1 announcements for user 2022303890
+[14-Dec-2025 12:30:03 UTC] Row 0: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 12:54:10 UTC] Web System Announcements Query:
+[14-Dec-2025 12:54:10 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 12:54:10 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 12:54:10 UTC] Found 1 announcements for user 2022303890
+[14-Dec-2025 12:54:10 UTC] Row 0: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 12:55:07 UTC] Web System Announcements Query:
+[14-Dec-2025 12:55:07 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 12:55:07 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 12:55:07 UTC] Found 1 announcements for user 2022303890
+[14-Dec-2025 12:55:07 UTC] Row 0: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 12:55:30 UTC] Web System Announcements Query:
+[14-Dec-2025 12:55:30 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 12:55:30 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 12:55:30 UTC] Found 1 announcements for user 2022303890
+[14-Dec-2025 12:55:30 UTC] Row 0: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 16:37:37 UTC] Web System Announcements Query:
+[14-Dec-2025 16:37:37 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 16:37:37 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 16:37:37 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 16:37:37 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 16:37:37 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 16:37:37 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 17:12:36 UTC] Web System Announcements Query:
+[14-Dec-2025 17:12:36 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 17:12:36 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 17:12:36 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 17:12:36 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 17:12:36 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 17:12:36 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 17:14:27 UTC] PHP Warning:  require(/home/zk044jzrzlc5/public_html/php-mobile/../database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/get-student-dashboard.php on line 11
+[14-Dec-2025 17:14:27 UTC] Student Dashboard Mobile Error: Failed opening required '/home/zk044jzrzlc5/public_html/php-mobile/../database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/get-student-dashboard.php:11
+[14-Dec-2025 17:14:27 UTC] Web System Announcements Query:
+[14-Dec-2025 17:14:27 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 17:14:27 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 17:14:27 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 17:14:27 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 17:14:27 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 17:14:27 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 17:14:29 UTC] Web System Announcements Query:
+[14-Dec-2025 17:14:29 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 17:14:29 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 17:14:29 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 17:14:29 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 17:14:29 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 17:14:29 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:27:17 UTC] Web System Announcements Query:
+[14-Dec-2025 20:27:17 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 20:27:17 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 20:27:17 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 20:27:17 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 20:27:17 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 20:27:17 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:46:44 UTC] Web System Announcements Query:
+[14-Dec-2025 20:46:44 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 20:46:44 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 20:46:44 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 20:46:44 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 20:46:44 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 20:46:44 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:47:00 UTC] Web System Announcements Query:
+[14-Dec-2025 20:47:00 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 20:47:00 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 20:47:00 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 20:47:00 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 20:47:00 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 20:47:00 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:47:06 UTC] Web System Announcements Query:
+[14-Dec-2025 20:47:06 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 20:47:06 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 20:47:06 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 20:47:06 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 20:47:06 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 20:47:06 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:47:18 UTC] Web System Announcements Query:
+[14-Dec-2025 20:47:18 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 20:47:18 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 20:47:18 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 20:47:18 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 20:47:18 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 20:47:18 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:48:46 UTC] Web System Announcements Query:
+[14-Dec-2025 20:48:46 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 20:48:46 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 20:48:46 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 20:48:46 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 20:48:46 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 20:48:46 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:52:04 UTC] Web System Announcements Query:
+[14-Dec-2025 20:52:04 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 20:52:04 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 20:52:04 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 20:52:04 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 20:52:04 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 20:52:04 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:55:03 UTC] Web System Announcements Query:
+[14-Dec-2025 20:55:03 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 20:55:03 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 20:55:04 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 20:55:04 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 20:55:04 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 20:55:04 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 20:56:03 UTC] PHP Warning:  require(/home/zk044jzrzlc5/public_html/php-mobile/../database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 11
+[14-Dec-2025 20:56:03 UTC] Student Dashboard Mobile Error: Failed opening required '/home/zk044jzrzlc5/public_html/php-mobile/../database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:11
+[14-Dec-2025 20:56:58 UTC] PHP Warning:  require(/home/zk044jzrzlc5/public_html/php-mobile/../database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 11
+[14-Dec-2025 20:56:58 UTC] Student Dashboard Mobile Error: Failed opening required '/home/zk044jzrzlc5/public_html/php-mobile/../database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:11
+[14-Dec-2025 20:57:44 UTC] PHP Warning:  require(/home/zk044jzrzlc5/public_html/php-mobile/../database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 11
+[14-Dec-2025 20:57:44 UTC] Student Dashboard Mobile Error: Failed opening required '/home/zk044jzrzlc5/public_html/php-mobile/../database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:11
+[14-Dec-2025 20:57:47 UTC] PHP Warning:  require(/home/zk044jzrzlc5/public_html/php-mobile/../database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 11
+[14-Dec-2025 20:57:47 UTC] Student Dashboard Mobile Error: Failed opening required '/home/zk044jzrzlc5/public_html/php-mobile/../database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:11
+[14-Dec-2025 21:21:28 UTC] Mobile HomeStats - Session ID: tofba8sr3kft7g7fbv6u2pjft8
+[14-Dec-2025 21:21:28 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:21:28 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"tofba8sr3kft7g7fbv6u2pjft8"}
+[14-Dec-2025 21:21:28 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:220
+[14-Dec-2025 21:21:57 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:21:57 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:21:57 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:21:57 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:220
+[14-Dec-2025 21:22:16 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:16 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:16 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:16 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:17 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:17 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:17 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:17 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:17 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:17 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:17 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:17 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:18 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:19 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:22:20 UTC] Mobile HomeStats - Session ID: o8fcvd5ej8hbopadscvf00ttma
+[14-Dec-2025 21:22:20 UTC] Mobile HomeStats - Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:22:20 UTC] Mobile HomeStats - Cookies: {"PHPSESSID":"o8fcvd5ej8hbopadscvf00ttma"}
+[14-Dec-2025 21:22:20 UTC] Mobile HomeStats Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.due_date' in 'SELECT' in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:212
+[14-Dec-2025 21:25:06 UTC] PHP Warning:  require_once(../config/database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 3
+[14-Dec-2025 21:25:06 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config/database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 3
+[14-Dec-2025 21:25:08 UTC] PHP Warning:  require_once(../config/database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 3
+[14-Dec-2025 21:25:08 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config/database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 3
+[14-Dec-2025 21:25:09 UTC] PHP Warning:  require_once(../config/database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 3
+[14-Dec-2025 21:25:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config/database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 3
+[14-Dec-2025 21:25:09 UTC] PHP Warning:  require_once(../config/database.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 3
+[14-Dec-2025 21:25:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config/database.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 3
+[14-Dec-2025 21:26:37 UTC] Web System Announcements Query:
+[14-Dec-2025 21:26:37 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 21:26:37 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 21:26:37 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 21:26:37 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 21:26:37 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 21:26:37 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 21:26:39 UTC] Web System Announcements Query:
+[14-Dec-2025 21:26:39 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 21:26:39 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 21:26:39 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 21:26:39 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 21:26:39 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 21:26:39 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 21:34:32 UTC] PHP Warning:  require_once(../includes/auth.php): Failed to open stream: No such file or directory in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 4
+[14-Dec-2025 21:34:32 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../includes/auth.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 4
+[14-Dec-2025 21:50:26 UTC] === DASHBOARD REQUEST ===
+[14-Dec-2025 21:50:26 UTC] Session ID from PHP: 6kgfd6cvgtao0c5ktf4vq3og05
+[14-Dec-2025 21:50:26 UTC] Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:50:26 UTC] Cookies: {"PHPSESSID":"6kgfd6cvgtao0c5ktf4vq3og05"}
+[14-Dec-2025 21:50:26 UTC] Request Headers: {"Content-Type":"application\/json","Host":"educoreustp.online","Connection":"Keep-Alive","Accept-Encoding":"gzip","Cookie":"PHPSESSID=6kgfd6cvgtao0c5ktf4vq3og05","User-Agent":"okhttp\/4.12.0","Content-Length":"0"}
+[14-Dec-2025 21:50:26 UTC] SESSION IS EMPTY - checking if user_id exists in POST/GET
+[14-Dec-2025 21:50:26 UTC] No user_id found anywhere
+[14-Dec-2025 21:50:27 UTC] === DASHBOARD REQUEST ===
+[14-Dec-2025 21:50:27 UTC] Session ID from PHP: 6kgfd6cvgtao0c5ktf4vq3og05
+[14-Dec-2025 21:50:27 UTC] Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:50:27 UTC] Cookies: {"PHPSESSID":"6kgfd6cvgtao0c5ktf4vq3og05"}
+[14-Dec-2025 21:50:27 UTC] Request Headers: {"Content-Type":"application\/json","Host":"educoreustp.online","Connection":"Keep-Alive","Accept-Encoding":"gzip","Cookie":"PHPSESSID=6kgfd6cvgtao0c5ktf4vq3og05","User-Agent":"okhttp\/4.12.0","If-Modified-Since":"Sun, 14 Dec 2025 21:50:26 GMT","Content-Length":"0"}
+[14-Dec-2025 21:50:27 UTC] SESSION IS EMPTY - checking if user_id exists in POST/GET
+[14-Dec-2025 21:50:27 UTC] No user_id found anywhere
+[14-Dec-2025 21:50:27 UTC] === DASHBOARD REQUEST ===
+[14-Dec-2025 21:50:27 UTC] Session ID from PHP: 6kgfd6cvgtao0c5ktf4vq3og05
+[14-Dec-2025 21:50:27 UTC] Session Data: {"id":2,"id_number":"2022303890","first_name":"karl isiah","middle_name":"B.","last_name":"Poloyapoy","suffix":"","full_name":"karl isiah B. Poloyapoy","role":"treasurer","user_type":"student","email":"poloyapoykarlisiah17@gmail.com","department":"BSIT","school_year":"2025-2026","status":"Active","profile_picture":"uploads\/profile_picture\/profile_2022303890_1765688124_e3a6699a.jpg"}
+[14-Dec-2025 21:50:27 UTC] Cookies: {"PHPSESSID":"6kgfd6cvgtao0c5ktf4vq3og05"}
+[14-Dec-2025 21:50:27 UTC] Request Headers: {"Content-Type":"application\/json","Host":"educoreustp.online","Connection":"Keep-Alive","Accept-Encoding":"gzip","Cookie":"PHPSESSID=6kgfd6cvgtao0c5ktf4vq3og05","User-Agent":"okhttp\/4.12.0","If-Modified-Since":"Sun, 14 Dec 2025 21:50:27 GMT","Content-Length":"0"}
+[14-Dec-2025 21:50:27 UTC] SESSION IS EMPTY - checking if user_id exists in POST/GET
+[14-Dec-2025 21:50:27 UTC] No user_id found anywhere
+[14-Dec-2025 21:52:09 UTC] === DASHBOARD REQUEST ===
+[14-Dec-2025 21:52:09 UTC] Session ID: 6kgfd6cvgtao0c5ktf4vq3og05
+[14-Dec-2025 21:52:09 UTC] Session keys: id, id_number, first_name, middle_name, last_name, suffix, full_name, role, user_type, email, department, school_year, status, profile_picture
+[14-Dec-2025 21:52:09 UTC] Processing for user: 2022303890 (karl isiah B. Poloyapoy)
+[14-Dec-2025 21:52:09 UTC] Successfully loaded dashboard data for: 2022303890
+[14-Dec-2025 21:55:08 UTC] === DASHBOARD REQUEST ===
+[14-Dec-2025 21:55:08 UTC] Session ID: 6kgfd6cvgtao0c5ktf4vq3og05
+[14-Dec-2025 21:55:08 UTC] Session keys: id, id_number, first_name, middle_name, last_name, suffix, full_name, role, user_type, email, department, school_year, status, profile_picture
+[14-Dec-2025 21:55:08 UTC] PHP Warning:  Undefined variable $startYear in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 50
+[14-Dec-2025 21:55:08 UTC] PHP Warning:  Undefined variable $endYear in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 50
+[14-Dec-2025 21:55:08 UTC] Processing for user: 2022303890 (karl isiah B. Poloyapoy)
+[14-Dec-2025 21:55:08 UTC] Successfully loaded dashboard data for: 2022303890
+[14-Dec-2025 21:55:10 UTC] === DASHBOARD REQUEST ===
+[14-Dec-2025 21:55:10 UTC] Session ID: 6kgfd6cvgtao0c5ktf4vq3og05
+[14-Dec-2025 21:55:10 UTC] Session keys: id, id_number, first_name, middle_name, last_name, suffix, full_name, role, user_type, email, department, school_year, status, profile_picture
+[14-Dec-2025 21:55:10 UTC] PHP Warning:  Undefined variable $startYear in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 50
+[14-Dec-2025 21:55:10 UTC] PHP Warning:  Undefined variable $endYear in /home/zk044jzrzlc5/public_html/php-mobile/student-homestats.php on line 50
+[14-Dec-2025 21:55:10 UTC] Processing for user: 2022303890 (karl isiah B. Poloyapoy)
+[14-Dec-2025 21:55:10 UTC] Successfully loaded dashboard data for: 2022303890
+[14-Dec-2025 22:05:08 UTC] Web System Announcements Query:
+[14-Dec-2025 22:05:08 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:05:08 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:05:08 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:05:08 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:05:08 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:05:08 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:15:34 UTC] Web System Announcements Query:
+[14-Dec-2025 22:15:34 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:15:34 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:15:34 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:15:34 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:15:34 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:15:34 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:25:47 UTC] Web System Announcements Query:
+[14-Dec-2025 22:25:47 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:25:47 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:25:47 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:25:47 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:25:47 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:25:47 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:29:57 UTC] Web System Announcements Query:
+[14-Dec-2025 22:29:57 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:29:57 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:29:57 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:29:57 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:29:57 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:29:57 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:48 UTC] Web System Announcements Query:
+[14-Dec-2025 22:33:48 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:33:48 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:33:48 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:33:48 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:33:48 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:48 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:51 UTC] Web System Announcements Query:
+[14-Dec-2025 22:33:51 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:33:51 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:33:51 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:33:51 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:33:51 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:51 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:51 UTC] Web System Announcements Query:
+[14-Dec-2025 22:33:51 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:33:51 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:33:51 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:33:51 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:33:51 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:51 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:54 UTC] Web System Announcements Query:
+[14-Dec-2025 22:33:54 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:33:54 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:33:54 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:33:54 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:33:54 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:54 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:58 UTC] Web System Announcements Query:
+[14-Dec-2025 22:33:58 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:33:58 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:33:58 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:33:58 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:33:58 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:33:58 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:10 UTC] Web System Announcements Query:
+[14-Dec-2025 22:34:10 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:34:10 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:34:10 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:34:10 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:34:10 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:10 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:15 UTC] Web System Announcements Query:
+[14-Dec-2025 22:34:15 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:34:15 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:34:15 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:34:15 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:34:15 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:15 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:17 UTC] Web System Announcements Query:
+[14-Dec-2025 22:34:17 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:34:17 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:34:17 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:34:17 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:34:17 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:17 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:23 UTC] Web System Announcements Query:
+[14-Dec-2025 22:34:23 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:34:23 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:34:23 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:34:23 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:34:23 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:23 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:25 UTC] Web System Announcements Query:
+[14-Dec-2025 22:34:25 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:34:25 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:34:25 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:34:25 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:34:25 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:34:25 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 22:46:15 UTC] Web System Announcements Query:
+[14-Dec-2025 22:46:15 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 22:46:15 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 22:46:15 UTC] Found 3 announcements for user 2022303890
+[14-Dec-2025 22:46:15 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 22:46:15 UTC] Row 1: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 22:46:15 UTC] Row 2: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:15:44 UTC] Mobile Profile update error for user 2022303890: Image dimensions too large. Maximum allowed: 3000x3000px
+[14-Dec-2025 23:15:48 UTC] Mobile Profile update error for user 2022303890: Image dimensions too large. Maximum allowed: 3000x3000px
+[14-Dec-2025 23:16:03 UTC] Mobile Profile update error for user 2022303890: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'updated_at' in 'SET'
+[14-Dec-2025 23:19:22 UTC] Mobile App: User 2022303890 updated profile. Changes: profile_picture = ?
+[14-Dec-2025 23:36:15 UTC] Web System Announcements Query:
+[14-Dec-2025 23:36:15 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:36:15 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:36:15 UTC] Found 4 announcements for user 2022303890
+[14-Dec-2025 23:36:15 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:36:15 UTC] Row 1: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:36:15 UTC] Row 2: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:36:15 UTC] Row 3: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:36:21 UTC] Web System Announcements Query:
+[14-Dec-2025 23:36:21 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:36:21 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:36:21 UTC] Found 4 announcements for user 2022303890
+[14-Dec-2025 23:36:21 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:36:21 UTC] Row 1: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:36:21 UTC] Row 2: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:36:21 UTC] Row 3: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:05 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:05 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:05 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:05 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:05 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:05 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:05 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:05 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:05 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:09 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:09 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:09 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:09 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:09 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:09 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:09 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:09 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:09 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:12 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:12 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:12 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:12 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:12 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:12 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:12 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:12 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:12 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:14 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:14 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:14 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:14 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:14 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:14 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:14 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:14 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:14 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:23 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:23 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:23 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:23 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:23 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:23 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:23 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:23 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:23 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:28 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:28 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:28 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:28 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:28 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:28 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:28 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:28 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:28 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:30 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:30 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:30 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:30 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:30 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:30 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:30 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:30 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:30 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:32 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:32 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:32 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:32 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:32 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:32 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:32 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:32 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:32 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:34 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:34 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:34 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:34 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:34 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:34 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:34 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:34 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:34 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:39 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:39 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:39 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:39 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:39 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:39 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:39 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:39 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:39 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:50 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:50 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:50 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:50 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:50 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:50 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:50 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:50 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:50 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:53 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:53 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:53 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:53 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:53 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:53 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:53 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:53 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:53 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:55 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:55 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:55 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:55 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:55 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:55 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:55 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:55 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:55 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:58 UTC] Web System Announcements Query:
+[14-Dec-2025 23:53:58 UTC] User: 2022303890, Department: BSIT
+[14-Dec-2025 23:53:58 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[14-Dec-2025 23:53:58 UTC] Found 5 announcements for user 2022303890
+[14-Dec-2025 23:53:58 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[14-Dec-2025 23:53:58 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[14-Dec-2025 23:53:58 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:58 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[14-Dec-2025 23:53:58 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[14-Dec-2025 23:59:53 UTC] Mobile App: User 2022303890 updated profile. Changes: profile_picture = ?
+[15-Dec-2025 00:04:52 UTC] Web System Announcements Query:
+[15-Dec-2025 00:04:52 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:04:52 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:04:52 UTC] Found 5 announcements for user 2022303890
+[15-Dec-2025 00:04:52 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:04:52 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:04:52 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:04:52 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:04:52 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:03 UTC] Web System Announcements Query:
+[15-Dec-2025 00:05:03 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:05:03 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:05:03 UTC] Found 5 announcements for user 2022303890
+[15-Dec-2025 00:05:03 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:05:03 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:05:03 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:03 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:03 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:06 UTC] Web System Announcements Query:
+[15-Dec-2025 00:05:06 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:05:06 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:05:06 UTC] Found 5 announcements for user 2022303890
+[15-Dec-2025 00:05:06 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:05:06 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:05:06 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:06 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:06 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:14 UTC] Web System Announcements Query:
+[15-Dec-2025 00:05:14 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:05:14 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:05:14 UTC] Found 5 announcements for user 2022303890
+[15-Dec-2025 00:05:14 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:05:14 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:05:14 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:14 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:14 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:26 UTC] Web System Announcements Query:
+[15-Dec-2025 00:05:26 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:05:26 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:05:26 UTC] Found 5 announcements for user 2022303890
+[15-Dec-2025 00:05:26 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:05:26 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:05:26 UTC] Row 2: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:26 UTC] Row 3: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:26 UTC] Row 4: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:58 UTC] Web System Announcements Query:
+[15-Dec-2025 00:05:58 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:05:58 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:05:58 UTC] Found 6 announcements for user 2022303890
+[15-Dec-2025 00:05:58 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:05:58 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:05:58 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:58 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:58 UTC] Row 4: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:05:58 UTC] Row 5: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:08:14 UTC] Web System Announcements Query:
+[15-Dec-2025 00:08:14 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:08:14 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:08:14 UTC] Found 6 announcements for user 2022303890
+[15-Dec-2025 00:08:14 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:08:14 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:08:14 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:08:14 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:08:14 UTC] Row 4: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:08:14 UTC] Row 5: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:08:17 UTC] Web System Announcements Query:
+[15-Dec-2025 00:08:17 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:08:17 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:08:17 UTC] Found 6 announcements for user 2022303890
+[15-Dec-2025 00:08:17 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:08:17 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:08:17 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:08:17 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:08:17 UTC] Row 4: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:08:17 UTC] Row 5: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:14:45 UTC] Mobile App: User 2022303890 updated profile. Changes: profile_picture = ?
+[15-Dec-2025 00:15:00 UTC] Web System Announcements Query:
+[15-Dec-2025 00:15:00 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:15:00 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:15:00 UTC] Found 6 announcements for user 2022303890
+[15-Dec-2025 00:15:00 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:15:00 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:15:00 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:15:00 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:15:00 UTC] Row 4: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:15:00 UTC] Row 5: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:15:06 UTC] Web System Announcements Query:
+[15-Dec-2025 00:15:06 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:15:06 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:15:06 UTC] Found 6 announcements for user 2022303890
+[15-Dec-2025 00:15:06 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:15:06 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:15:06 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:15:06 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:15:06 UTC] Row 4: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:15:06 UTC] Row 5: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:16:17 UTC] Web System Announcements Query:
+[15-Dec-2025 00:16:17 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:16:17 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:16:17 UTC] Found 7 announcements for user 2022303890
+[15-Dec-2025 00:16:17 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:16:17 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:16:17 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:16:17 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:16:17 UTC] Row 4: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 00:16:17 UTC] Row 5: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:16:17 UTC] Row 6: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:24:18 UTC] Web System Announcements Query:
+[15-Dec-2025 00:24:18 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:24:18 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:24:18 UTC] Found 7 announcements for user 2022303890
+[15-Dec-2025 00:24:18 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:24:18 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:24:18 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:24:18 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:24:18 UTC] Row 4: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 00:24:18 UTC] Row 5: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:24:18 UTC] Row 6: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:25:48 UTC] Web System Announcements Query:
+[15-Dec-2025 00:25:48 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:25:48 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:25:48 UTC] Found 7 announcements for user 2022303890
+[15-Dec-2025 00:25:48 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:25:48 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:25:48 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:25:48 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:25:48 UTC] Row 4: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 00:25:48 UTC] Row 5: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:25:48 UTC] Row 6: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:41:08 UTC] Web System Announcements Query:
+[15-Dec-2025 00:41:08 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:41:08 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:41:08 UTC] Found 7 announcements for user 2022303890
+[15-Dec-2025 00:41:08 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:41:08 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:41:08 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:41:08 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:41:08 UTC] Row 4: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 00:41:08 UTC] Row 5: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:41:08 UTC] Row 6: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:42:52 UTC] Web System Announcements Query:
+[15-Dec-2025 00:42:52 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:42:52 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:42:52 UTC] Found 7 announcements for user 2022303890
+[15-Dec-2025 00:42:52 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:42:52 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:42:52 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:42:52 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:42:52 UTC] Row 4: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 00:42:52 UTC] Row 5: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:42:52 UTC] Row 6: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 00:42:55 UTC] Web System Announcements Query:
+[15-Dec-2025 00:42:55 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 00:42:55 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 00:42:55 UTC] Found 7 announcements for user 2022303890
+[15-Dec-2025 00:42:55 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 00:42:55 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 00:42:55 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 00:42:55 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 00:42:55 UTC] Row 4: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 00:42:55 UTC] Row 5: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 00:42:55 UTC] Row 6: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 01:19:32 UTC] Mobile App: User 2022303890 updated profile. Changes: profile_picture = ?
+[15-Dec-2025 01:47:29 UTC] Web System Announcements Query:
+[15-Dec-2025 01:47:29 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 01:47:29 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 01:47:29 UTC] Found 8 announcements for user 2022303890
+[15-Dec-2025 01:47:29 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 01:47:29 UTC] Row 1: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 01:47:29 UTC] Row 2: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 01:47:29 UTC] Row 3: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 01:47:29 UTC] Row 4: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 01:47:29 UTC] Row 5: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 01:47:29 UTC] Row 6: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 01:47:29 UTC] Row 7: ID=6, Title='test', Scope=general, Course=
+[15-Dec-2025 01:50:40 UTC] Web System Announcements Query:
+[15-Dec-2025 01:50:40 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 01:50:40 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 01:50:41 UTC] Found 9 announcements for user 2022303890
+[15-Dec-2025 01:50:41 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Row 1: ID=14, Title='adadadacxczxczxc', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Row 2: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Row 3: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 01:50:41 UTC] Row 4: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 01:50:41 UTC] Row 5: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Row 6: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 01:50:41 UTC] Row 7: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 01:50:41 UTC] Row 8: ID=6, Title='test', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Web System Announcements Query:
+[15-Dec-2025 01:50:41 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 01:50:41 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 01:50:41 UTC] Found 9 announcements for user 2022303890
+[15-Dec-2025 01:50:41 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Row 1: ID=14, Title='adadadacxczxczxc', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Row 2: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Row 3: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 01:50:41 UTC] Row 4: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 01:50:41 UTC] Row 5: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 01:50:41 UTC] Row 6: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 01:50:41 UTC] Row 7: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 01:50:41 UTC] Row 8: ID=6, Title='test', Scope=general, Course=
+[15-Dec-2025 01:52:49 UTC] Web System Announcements Query:
+[15-Dec-2025 01:52:49 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 01:52:49 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 01:52:49 UTC] Found 9 announcements for user 2022303890
+[15-Dec-2025 01:52:49 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 01:52:49 UTC] Row 1: ID=14, Title='adadadacxczxczxc', Scope=general, Course=
+[15-Dec-2025 01:52:49 UTC] Row 2: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 01:52:49 UTC] Row 3: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 01:52:49 UTC] Row 4: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 01:52:49 UTC] Row 5: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 01:52:49 UTC] Row 6: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 01:52:49 UTC] Row 7: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 01:52:49 UTC] Row 8: ID=6, Title='test', Scope=general, Course=
+[15-Dec-2025 02:00:00 UTC] Web System Announcements Query:
+[15-Dec-2025 02:00:00 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 02:00:00 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 02:00:00 UTC] Found 9 announcements for user 2022303890
+[15-Dec-2025 02:00:00 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 02:00:00 UTC] Row 1: ID=14, Title='adadadacxczxczxc', Scope=general, Course=
+[15-Dec-2025 02:00:00 UTC] Row 2: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 02:00:00 UTC] Row 3: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 02:00:00 UTC] Row 4: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 02:00:00 UTC] Row 5: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 02:00:00 UTC] Row 6: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 02:00:00 UTC] Row 7: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 02:00:00 UTC] Row 8: ID=6, Title='test', Scope=general, Course=
+[15-Dec-2025 02:07:12 UTC] Web System Announcements Query:
+[15-Dec-2025 02:07:12 UTC] User: 2022303890, Department: BSIT
+[15-Dec-2025 02:07:12 UTC] Active AY: 2025-2026 (Active Year: 2025)
+[15-Dec-2025 02:07:12 UTC] Found 10 announcements for user 2022303890
+[15-Dec-2025 02:07:12 UTC] Row 0: ID=18, Title='all', Scope=general, Course=
+[15-Dec-2025 02:07:12 UTC] Row 1: ID=14, Title='adadadacxczxczxc', Scope=general, Course=
+[15-Dec-2025 02:07:12 UTC] Row 2: ID=13, Title='test', Scope=general, Course=
+[15-Dec-2025 02:07:12 UTC] Row 3: ID=12, Title='debug testing again', Scope=course, Course=BSIT
+[15-Dec-2025 02:07:12 UTC] Row 4: ID=11, Title='test for debug posting', Scope=course, Course=BSIT
+[15-Dec-2025 02:07:12 UTC] Row 5: ID=10, Title='jack hoff reporting for doody', Scope=general, Course=
+[15-Dec-2025 02:07:12 UTC] Row 6: ID=9, Title='test', Scope=course, Course=BSIT
+[15-Dec-2025 02:07:12 UTC] Row 7: ID=8, Title='Educore', Scope=course, Course=BSIT
+[15-Dec-2025 02:07:12 UTC] Row 8: ID=7, Title='test', Scope=general, Course=
+[15-Dec-2025 02:07:12 UTC] Row 9: ID=6, Title='test', Scope=general, Course=

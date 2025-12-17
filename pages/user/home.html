@@ -1,0 +1,419 @@
+<!-- home-student.html -->
+<!-- Student home dashboard -->
+
+<style>
+  /* Student dashboard specific styles */
+  .student-welcome-card {
+    background-color: #ffffff;
+    border-left: 10px solid #0d6efd; /* Blue accent */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .student-academicYear {
+    background-color: #2c3e50;
+    border-left: 10px solid #3498db;
+  }
+
+  /* KPI cards for student */
+  .student-kpi-card {
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+
+  .student-kpi-announcements {
+    background: linear-gradient(135deg, #2c3e50, #4a6491);
+  }
+  .student-kpi-pending {
+    background: linear-gradient(135deg, #e74c3c, #ff6b6b);
+  }
+  .student-kpi-completed {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+  }
+
+  .student-kpi-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+
+  .student-kpi-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .student-small-label {
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .student-kpi-icon-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+  }
+
+  .student-kpi-icon-circle i {
+    font-size: 1.1rem;
+  }
+
+  /* Calendar */
+  .student-calendar-grid {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+  .student-calendar-grid th,
+  .student-calendar-grid td {
+    text-align: center;
+    padding: 4px;
+  }
+  .student-calendar-grid th {
+    font-weight: 600;
+    color: #6c757d;
+  }
+  .student-calendar-grid td span {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 50%;
+  }
+  .student-calendar-today span {
+    background-color: #0d6efd;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* Lists - FIXED for equal height and alignment */
+  .equal-height-row {
+    display: flex;
+    align-items: stretch; /* This makes all cards stretch to same height */
+  }
+  
+  .equal-height-row > .col-lg-7,
+  .equal-height-row > .col-lg-5 {
+    display: flex;
+  }
+  
+  .equal-height-row .card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .equal-height-row .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Important for proper scrolling */
+  }
+  
+  /* Scrollable lists */
+  .scrollable-list-container {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 150px; /* Minimum height */
+    max-height: 250px; /* Maximum height */
+  }
+  
+  /* Fix for Firefox */
+  @supports (-moz-appearance:none) {
+    .scrollable-list-container {
+      min-height: 0;
+    }
+  }
+
+  .student-no-scroll {
+    overflow: hidden !important;
+  }
+
+  #studentHomePage h1 {
+    letter-spacing: 0.08em;
+    font-size: 1.6rem; 
+  }
+
+  .student-kpi-col {
+    display: flex;
+  }
+  .student-kpi-card {
+    width: 100%;
+  }
+  
+  /* Make sure list items don't overflow */
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+    padding: 0.75rem 1rem;
+  }
+  
+  .list-group-item:first-child {
+    border-top: none;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Loading placeholders with fixed height */
+  .loading-placeholder {
+    height: 180px; /* Fixed height for loading state */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<div id="studentHomePage" class="container-fluid" data-role="student-home">
+  <!-- Home content -->
+  <h1 class="mb-3">STUDENT DASHBOARD</h1>
+  <hr class="mt-0 mb-3">
+
+  <!-- Top row: Welcome + Academic Year (left) and Calendar (right) -->
+  <div class="row g-3 mb-3">
+    <!-- Left: Welcome + AY stacked -->
+    <div class="col-lg-8 d-flex">
+      <div class="w-100">
+        <!-- Welcome message -->
+        <div class="card student-welcome-card mb-3">
+          <div class="card-body">
+            <h4 class="mb-1">
+              Welcome back, <span id="studentWelcomeUsername">Student</span>!
+            </h4>
+            <p class="text-muted mb-1">
+              <i class="bi bi-calendar me-1"></i> Today: 
+              <span id="studentWelcomeToday">—</span>
+            </p>
+            <p class="small text-muted mb-0">
+              Stay updated with announcements, dues, and academic information.
+            </p>
+          </div>
+        </div>
+
+        <!-- Current Academic Year highlight -->
+        <div id="studentCurrentAcademicYearDisplay">
+          <div class="card student-academicYear shadow-sm border-0">
+            <div class="card-body d-flex justify-content-between align-items-center text-white">
+              <!-- Left side (text) -->
+              <div>
+                <h6 class="mb-1 text-uppercase fw-bold" style="color: #3498db;">
+                  Current Academic Year
+                </h6>
+                <h3 class="mb-2" id="displayStudentAcademicYear">0000 - 0000</h3>
+                <p class="mb-2 mb-lg-0">
+                  <strong>Active Year:</strong>
+                  <span id="displayStudentActiveYear" class="badge bg-success">----</span>
+                </p>
+                <div class="small text-white-50 mt-1">
+                  <span id="displayStudentSemesterLabel">—</span>
+                </div>
+              </div>
+
+              <!-- Right side (image) -->
+              <div>
+                <img src="assets/images/academic-year.png" alt="Academic Year"
+                     style="height: 80px; object-fit: contain; margin-right: 30px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Calendar -->
+    <div class="col-lg-4 d-flex">
+      <div class="card shadow-sm h-100 w-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-calendar-event me-1"></i> Calendar</span>
+          <span class="small text-muted" id="studentCalendarMonthLabel">Month YYYY</span>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <table class="student-calendar-grid mb-2">
+            <thead>
+              <tr>
+                <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
+              </tr>
+            </thead>
+            <tbody id="studentCalendarBody">
+              <!-- Filled by JS -->
+            </tbody>
+          </table>
+          <div class="small text-muted mt-auto">
+            Today: <span id="studentCalendarTodayLabel">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI row -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-4 col-sm-6 student-kpi-col">
+      <div class="card student-kpi-card student-kpi-announcements">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="student-kpi-title">Active Announcements</div>
+              <div class="student-kpi-value" id="kpiActiveAnnouncements">0</div>
+            </div>
+            <div class="student-kpi-icon-circle">
+              <i class="bi bi-megaphone"></i>
+            </div>
+          </div>
+          <div class="student-small-label mt-2">Visible to you this AY</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 student-kpi-col">
+      <div class="card student-kpi-card student-kpi-pending">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="student-kpi-title">Pending Dues</div>
+              <div class="student-kpi-value" id="kpiPendingDues">0</div>
+            </div>
+            <div class="student-kpi-icon-circle">
+              <i class="bi bi-clock-history"></i>
+            </div>
+          </div>
+          <div class="student-small-label mt-2">Awaiting payment</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 student-kpi-col">
+      <div class="card student-kpi-card student-kpi-completed">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="student-kpi-title">Completed Dues</div>
+              <div class="student-kpi-value" id="kpiCompletedDues">0</div>
+            </div>
+            <div class="student-kpi-icon-circle">
+              <i class="bi bi-check-circle"></i>
+            </div>
+          </div>
+          <div class="student-small-label mt-2">Paid this AY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content row: Announcements and Pending Dues - FIXED for perfect alignment -->
+  <div class="row g-3 mb-4 equal-height-row">
+    <!-- Recent Announcements -->
+    <div class="col-lg-7">
+      <div class="card shadow-sm h-100">
+        <div class="card-header d-flex align-items-center">
+          <i class="bi bi-megaphone me-2"></i> Recent Announcements
+        </div>
+        <div class="card-body d-flex flex-column p-0">
+          <div class="scrollable-list-container p-3">
+            <ul class="list-group list-group-flush small mb-0" id="studentRecentAnnouncements">
+              <!-- JS fills announcements here -->
+              <li class="list-group-item loading-placeholder text-muted">
+                <div class="text-center">
+                  <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                  Loading announcements...
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="small text-muted mt-auto p-3 pt-2 border-top" id="studentAnnouncementsNote">
+            Recent announcements relevant to your course.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pending Dues -->
+    <div class="col-lg-5">
+      <div class="card shadow-sm h-100">
+        <div class="card-header d-flex align-items-center">
+          <i class="bi bi-receipt me-2"></i> Pending Dues
+        </div>
+        <div class="card-body d-flex flex-column p-0">
+          <div class="scrollable-list-container p-3">
+            <ul class="list-group list-group-flush small mb-0" id="studentPendingDues">
+              <!-- JS fills pending dues here -->
+              <li class="list-group-item loading-placeholder text-muted">
+                <div class="text-center">
+                  <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                  Loading dues information...
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="small text-muted mt-auto p-3 pt-2 border-top" id="studentDuesNote">
+            Your pending organization dues.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Links -->
+<!-- Updated Quick Links section only -->
+<div class="row g-3">
+  <div class="col-12">
+    <div class="card shadow-sm">
+      <div class="card-header d-flex align-items-center">
+        <i class="bi bi-link-45deg me-2"></i> Quick Links
+      </div>
+      <div class="card-body">
+        <div class="row text-center">
+          <!-- ANNOUNCEMENTS -->
+          <div class="col-md-3 col-6 mb-3">
+            <a href="#announcements" class="text-decoration-none quick-link">
+              <div class="p-3 border rounded hover-shadow">
+                <i class="bi bi-megaphone fs-1 text-primary"></i>
+                <div class="mt-2 fw-semibold">ANNOUNCEMENTS</div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- ORGANIZATION FEES -->
+          <div class="col-md-3 col-6 mb-3">
+            <a href="#organizations" class="text-decoration-none quick-link">
+              <div class="p-3 border rounded hover-shadow">
+                <i class="bi bi-cash-stack fs-1 text-success"></i>
+                <div class="mt-2 fw-semibold">ORGANIZATION FEES</div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- TRANSACT HISTORY -->
+          <div class="col-md-3 col-6 mb-3">
+            <a href="#dues" class="text-decoration-none quick-link">
+              <div class="p-3 border rounded hover-shadow">
+                <i class="bi bi-clock-history fs-1 text-warning"></i>
+                <div class="mt-2 fw-semibold">TRANSACT HISTORY</div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- EVENT EXPENSES -->
+          <div class="col-md-3 col-6 mb-3">
+            <a href="#profile" class="text-decoration-none quick-link">
+              <div class="p-3 border rounded hover-shadow">
+                <i class="bi bi-receipt-cutoff fs-1 text-info"></i>
+                <div class="mt-2 fw-semibold">EVENT EXPENSES</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

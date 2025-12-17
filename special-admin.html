@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCore</title>
+    <link rel="icon" href="assets/images/logo.png" />
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Intro Div -->
+    <div id="intro" class="d-flex flex-column justify-content-center align-items-center text-center p-4 position-fixed top-0 start-0 w-100 h-100 bg-white" style="z-index: 9999;">
+        <img src="assets/images/logo.png" class="img-fluid mb-4" style="max-height: 150px; max-width: 150px;" alt="Logo">
+        <div style="height: 5%;"></div>
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar-toggle">
+            <div class="sidebar-logo">
+                <a href="#"><span class="white-color">E</span><span class="yellow-color">du</span><span class="white-color">Co</span><span class="yellow-color">r</span><span class="white-color">e</span></a>
+            </div>
+            <div class="profile">
+                <center><img class="profile-picture" src="assets/images/profile.png"></center>
+                <center>
+                    <p class="username">Loading...</p>
+                    <p class="rank">Loading...</p>
+                </center>
+            </div>
+            <!-- Sidebar Navigation -->
+            <ul class="sidebar-nav p-0">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link selected">
+                        <i class="bi bi-house-door-fill"></i>
+                        <span>HOME</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-patch-check"></i>
+                        <span>MANAGE ACCREDITATION</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-megaphone"></i>
+                        <span>MANAGE ANNOUNCEMENT</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-section="event-expenses">
+                            <i class="bi bi-cash-stack"></i>
+                            <span>EVENT EXPENSES</span>
+                        </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#organization" aria-expanded="false" aria-controls="organization">
+                        <i class="bi bi-diagram-3"></i>
+                        <span>ORGANIZATION</span>
+                    </a>
+                    <ul id="organization" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link" data-section="dept-org-fee">
+                                <i class="bi bi-cash"></i>
+                                <span>Dept Org Fee</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link" data-section="general-org-fee">
+                                <i class="bi bi-cash-coin"></i>
+                                <span>General Org Fee</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                            <a href="#" class="sidebar-link" data-section="records">
+                                <i class="bi bi-clipboard-data-fill"></i>
+                                <span>Records</span>
+                            </a>
+                </li>  
+            </ul>
+
+            <!-- REMOVED Sidebar Footer with Logout Button -->
+        </aside>
+
+        <!-- Main Component -->
+        <div class="main">
+            <nav class="navbar navbar-expand justify-content-between">
+                <button class="toggler-btn" type="button">
+                    <i id="menu" class="bi bi-list"></i>
+                </button>
+                <div class="ms-auto d-flex align-items-center">
+                    <span style="visibility: hidden;">####</span>
+                    <!-- Notification Trigger (no dropdown) -->
+                    <button class="btn btn-lg border-0 me-3" id="bellButton" aria-controls="notifPanel" aria-expanded="false">
+                        <i id="bellIcon" class="bi bi-bell" style="font-size: 1.8rem;"></i>
+                        <span id="notifDot" aria-hidden="true"></span>
+                    </button>
+                    <!-- Profile Dropdown (EXACTLY like super-admin) -->
+                    <div class="dropdown">
+                        <button class="btn btn-lg border-0" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="profile-icon" src="assets/images/profile.png" alt="Profile"
+                                style="width: 50px; height: 50px; border-radius: 50%;">
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item profile-link" href="#"><i class="bi bi-person"></i> Profile</a></li>
+                            <li><a class="dropdown-item about-us-link" href="#"><i class="bi bi-question-circle"></i> About Us</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item logout-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Notification Overlay -->
+            <div id="notifOverlay" class="notif-overlay" hidden></div>
+
+            <!-- Slide-in Notification Panel (Left) -->
+            <aside id="notifPanel" class="notif-panel" aria-hidden="true" tabindex="-1">
+            <div class="notif-header">
+                <h5 class="mb-0">Notifications</h5>
+                <button type="button" class="btn-close" id="notifCloseBtn" aria-label="Close"></button>
+            </div>
+            <div class="notif-body" id="notifList">
+                <!-- Example empty state -->
+                <div class="text-center text-muted py-4">No new notifications</div>
+            </div>
+            </aside>
+
+             <!-- Content area where pages will load -->
+            <div id="content-area" class="p-4">
+                <!-- Default content -->
+                <div class="container-fluid">
+                    <h1>WELCOME TO EDUCORE</h1>
+                    <p class="text-muted">Please select an item from the sidebar to get started.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Error Modal -->
+    <div class="modal fade" id="statusErrorsModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-m" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#db3646" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                        <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                        <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+                    </svg>
+                    <h4 class="text-danger mt-3">Error</h4>
+                    <p id="errorDialogue" class="mt-3">Error Message Will Show Here</p>
+                    <button type="button" class="btn btn-lg mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Success Modal -->
+    <div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-m" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                    </svg>
+                    <h4 class="text-success mt-3">Success!</h4>
+                    <p id="successDialogue" class="mt-3">Success Message Will Show Here</p>
+                    <button type="button" class="btn btn-lg mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="notifDetailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="notifDetailTitle">Notification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="notifDetailBody" class="mb-2"></p>
+        <div id="notifDetailMeta" class="small text-muted"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Logout Confirmation Modal (Updated to match super-admin) -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="warning bi bi-exclamation-triangle text-warning"></i>
+                    <p>Are you sure you want to log out?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="logOutBtn" class="btn btn-danger">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- View Announcement Modal -->
+    <div class="modal fade" id="viewAnnouncementModal" tabindex="-1" aria-labelledby="viewAnnouncementModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="viewAnnouncementModalLabel">View Announcement</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="viewAnnouncementBody"></div>
+        </div>
+    </div>
+    </div>
+        
+    <div class="modal fade" id="notifDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="notifDetailTitle">Notification</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p id="notifDetailBody" class="mb-2"></p>
+            <div id="notifDetailMeta" class="small text-muted"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-outline-secondary"
+                    data-bs-dismiss="modal">
+            Close
+            </button>
+            <!-- This one is dynamic: only shown if notif is linked to a user -->
+            <button type="button"
+                    class="btn btn-primary d-none"
+                    id="notifDetailActionBtn">
+            View user details
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Announcement Decline Reason Modal -->
+    <div class="modal fade" id="announcementDeclineModal" tabindex="-1" aria-labelledby="announcementDeclineModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <!-- Header -->
+        <div class="modal-header">
+            <h5 class="modal-title" id="announcementDeclineModalLabel">
+            Decline Announcement
+            </h5>
+            <button type="button"
+                    class="btn-close announcementDeclineCancelBtn"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+            <p class="small text-muted mb-2">
+            You are about to <strong>reject</strong> this announcement.
+            You may provide a reason so the creator understands why.
+            </p>
+
+            <div class="mb-0">
+            <label for="announcementDeclineReason" class="form-label small mb-1">
+                Reason for rejection <span class="text-muted">(optional)</span>
+            </label>
+            <textarea
+                id="announcementDeclineReason"
+                class="form-control"
+                rows="4"
+                placeholder="Enter reason for rejection (optional)..."></textarea>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-secondary announcementDeclineCancelBtn"
+                    data-bs-dismiss="modal">
+            Cancel
+            </button>
+            <button type="button"
+                    class="btn btn-danger"
+                    id="announcementDeclineSaveBtn">
+            Reject Announcement
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Organization Details Modal (replaces side details card) -->
+    <div class="modal fade" id="accrDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+        <div
+            class="modal-header d-flex align-items-center justify-content-between bg-white border-0 pb-0"
+            aria-live="polite"
+        >
+            <div class="d-flex align-items-center">
+            <img
+                id="accrOrgLogo"
+                class="me-2 rounded d-none"
+                alt=""
+                style="width:32px;height:32px;object-fit:cover;"
+            >
+            <div>
+                <h5 class="modal-title mb-0" id="accrOrgName">—</h5>
+                <small class="text-muted" id="accrOrgAbbr">—</small>
+            </div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+            <button
+                class="btn btn-sm btn-outline-secondary"
+                id="openEditOrgBtn"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#editOrgModal"
+            >
+            <span><i class="bi bi-pencil-square"></i> Edit</span>
+            </button>
+            <span style="display: none;" id="accrStatus" class="badge bg-secondary">—</span>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button> 
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+            <div>
+                <span
+                class="badge text-bg-info"
+                id="accrScopeBadge"
+                >—</span>
+                <small class="ms-2">
+                Course:
+                <strong id="accrCourseAbbr">—</strong>
+                </small>
+            </div>
+            <small class="text-muted">
+                AY <span id="accrYear">—</span>
+            </small>
+            </div>
+
+            <hr class="my-2" />
+            <h6 class="mb-2">Submitted Documents</h6>
+
+            <!-- NEW: Bulk selection for special admin -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="accrBulkSelectAll">
+                <label class="form-check-label small" for="accrBulkSelectAll">
+                Select all documents
+                </label>
+            </div>
+            <div class="btn-group btn-group-sm">
+                <button
+                type="button"
+                class="btn btn-outline-danger"
+                id="accrBulkReturnBtn"
+                disabled
+                >
+                <i class="bi bi-arrow-counterclockwise"></i> Return Selected
+                </button>
+            </div>
+            </div>
+
+            <div class="vstack gap-2" id="accrDocsWrap"></div>
+
+            <div class="d-grid gap-2 mt-3">
+            <button
+                class="btn btn-outline-primary btn-sm d-none"
+                id="openReaccrBtn"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#reaccrModal"
+            >
+                <i class="bi bi-arrow-repeat me-1"></i> Reaccredit Organization
+            </button>
+            </div>
+        </div>
+
+        <div class="modal-footer d-flex justify-content-between small bg-light" style="display: none;">
+            <span id="submittedAt" style="display: none;">Submitted: —</span>
+            <span id="lastUpdated" style="display: none;">Last update: —</span>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Edit Organization Modal (NEW) -->
+    <div class="modal fade" id="editOrgModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+        <div class="modal-header border-0">
+            <h5 class="modal-title">Edit Organization</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <form id="editOrgForm" class="modal-body" enctype="multipart/form-data">
+            <input type="hidden" name="org_id" id="editOrgId">
+
+            <div class="row g-2">
+            <div class="col-md-6">
+                <label class="form-label">Organization Name</label>
+                <input
+                type="text"
+                class="form-control"
+                name="org_name"
+                id="editOrgName"
+                required
+                >
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Abbreviation</label>
+                <input
+                type="text"
+                class="form-control"
+                name="org_abbr"
+                id="editOrgAbbr"
+                maxlength="50"
+                required
+                >
+            </div>
+            <div class="col-md-3">
+                <label class="form-label d-flex justify-content-between align-items-center">
+                <span>Logo</span>
+                <small class="text-muted">Max 2MB</small>
+                </label>
+                <input
+                type="file"
+                class="form-control"
+                name="org_logo"
+                id="editOrgLogo"
+                accept="image/png,image/jpeg"
+                >
+                <small class="text-muted">Leave empty to keep current logo.</small>
+            </div>
+            </div>
+
+            <hr>
+            <div class="mb-2">
+            <label class="form-label d-block">Scope</label>
+            <div class="btn-group" role="group">
+                <input
+                type="radio"
+                class="btn-check"
+                name="scope"
+                id="edit-scope-general"
+                value="general"
+                checked
+                >
+                <label class="btn btn-outline-secondary" for="edit-scope-general">
+                General (all courses)
+                </label>
+                <input
+                type="radio"
+                class="btn-check"
+                name="scope"
+                id="edit-scope-exclusive"
+                value="exclusive"
+                >
+                <label class="btn btn-outline-primary" for="edit-scope-exclusive">
+                Exclusive (specific course)
+                </label>
+            </div>
+            </div>
+
+            <div class="mb-2 d-none" id="editExclusiveCourseRow">
+            <label class="form-label d-block">Select Course (Department)</label>
+            <div id="editOrgCourseChips" class="d-flex flex-wrap gap-1"></div>
+            </div>
+
+            <hr>
+            <!-- Admin picker (EDIT) -->
+            <div class="mb-2">
+            <label class="form-label">Assign Admin (optional)</label>
+            <div class="dropdown w-100">
+                <input
+                type="text"
+                id="editAdminSearch"
+                class="form-control dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                placeholder="Search by name or ID number"
+                >
+                <input
+                type="hidden"
+                name="admin_id_number"
+                id="editAdminIdHidden"
+                >
+                <div class="dropdown-menu w-100" id="editAdminMenu"></div>
+            </div>
+            <small class="text-muted">
+                Leave blank to clear the admin, or choose another one.
+            </small>
+            </div>
+
+            <small class="text-muted d-block mt-2">
+            Changes affect the current organization record under the active AY span.
+            </small>
+        </form>
+
+        <div class="modal-footer border-0">
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            Cancel
+            </button>
+            <button class="btn btn-primary" id="saveEditOrgBtn" type="button">
+            Save Changes
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+   <!-- Decline Reason Modal (for special admin) -->
+    <div class="modal fade" id="declineReasonModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header border-0">
+            <h5 class="modal-title">Return Documents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="declineReasonForm" class="modal-body">
+            <input type="hidden" name="org_id" />
+            <div class="mb-2">
+            <label class="form-label">Reason</label>
+            <textarea
+                class="form-control"
+                name="reason"
+                rows="4"
+                placeholder="State the reason for returning…"
+                required
+            ></textarea>
+            </div>
+        </form>
+        <div class="modal-footer border-0">
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            Cancel
+            </button>
+            <button class="btn btn-danger" id="confirmDeclineBtn" type="button">
+            <i class="bi bi-arrow-counterclockwise"></i> Confirm Return
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- NEW: Review Confirmation Modal -->
+    <div class="modal fade" id="reviewConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header border-0">
+            <h5 class="modal-title">Mark as Reviewed</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to mark the selected document(s) as <strong>Reviewed</strong>?</p>
+            <p class="small text-muted">This will change the status from "submitted" to "reviewed".</p>
+        </div>
+        <div class="modal-footer border-0">
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            Cancel
+            </button>
+            <button class="btn btn-review" id="confirmReviewBtn">
+            Mark as Reviewed
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileModalLabel">
+                    <i class="bi bi-person-circle me-2"></i>My Profile
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="profileForm" enctype="multipart/form-data">
+                    <div class="row">
+                        <!-- Left Column - Profile Picture -->
+                        <div class="col-md-4 text-center">
+                            <div class="profile-picture-section mb-4">
+                                <div class="profile-picture-container">
+                                    <img id="profilePreview" src="assets/images/profile.png" 
+                                         alt="Profile Picture" 
+                                         class="img-thumbnail rounded-circle profile-picture-lg">
+                                    <div class="profile-overlay" id="changePhotoBtn">
+                                        <i class="bi bi-camera-fill"></i>
+                                        <span>Change Photo</span>
+                                    </div>
+                                </div>
+                                <input type="file" id="profilePicture" name="profile_picture" accept="image/*" class="d-none">
+                                <div class="mt-2">
+                                    <small class="text-muted">Max size: 2MB (JPG, PNG, GIF, WebP)</small>
+                                </div>
+                                <div id="profileUploadStatus" class="mt-2"></div>
+                            </div>
+                            
+                            <div class="user-badge bg-light p-3 rounded border">
+                                <h6 class="mb-2"><i class="bi bi-award me-2"></i>Account Type</h6>
+                                <div class="d-flex flex-column gap-1">
+                                    <span class="badge bg-primary" id="userTypeBadge">Loading...</span>
+                                    <span class="badge bg-info" id="roleBadge">Loading...</span>
+                                </div>
+                                
+                                <div class="mt-3 pt-2 border-top">
+                                    <small class="text-muted d-block">
+                                        <i class="bi bi-calendar me-1"></i>
+                                        <span id="accountAge">Account age: --</span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column - Profile Information -->
+                        <div class="col-md-8">
+                            <!-- Basic Info Section -->
+                            <div class="card border-0 bg-light mb-4">
+                                <div class="card-body">
+                                    <h6 class="card-title border-bottom pb-2 mb-3">
+                                        <i class="bi bi-person-vcard me-2"></i>Basic Information
+                                    </h6>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="id_number" class="form-label">
+                                                <i class="bi bi-card-heading me-1"></i>ID Number
+                                            </label>
+                                            <input type="text" class="form-control" id="id_number" readonly>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <label for="school_year" class="form-label">
+                                                <i class="bi bi-calendar-week me-1"></i>School Year
+                                            </label>
+                                            <input type="text" class="form-control" id="school_year" readonly>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="first_name" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="first_name" readonly>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <label for="last_name" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="last_name" readonly>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="middle_name" class="form-label">Middle Name</label>
+                                            <input type="text" class="form-control" id="middle_name" readonly>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <label for="suffix" class="form-label">Suffix</label>
+                                            <input type="text" class="form-control" id="suffix" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact & Department Section -->
+                            <div class="card border-0 bg-light mb-4">
+                                <div class="card-body">
+                                    <h6 class="card-title border-bottom pb-2 mb-3">
+                                        <i class="bi bi-building me-2"></i>Academic & Contact Information
+                                    </h6>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="department" class="form-label">Department/Course</label>
+                                            <input type="text" class="form-control" id="department" readonly>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <label for="email" class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" name="email" required>
+                                            <div class="form-text">You can change your email address</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Account Status Section -->
+                            <div class="card border-0 bg-light">
+                                <div class="card-body">
+                                    <h6 class="card-title border-bottom pb-2 mb-3">
+                                        <i class="bi bi-shield-check me-2"></i>Account Status
+                                    </h6>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <span class="me-2">Status:</span>
+                                                    <span class="badge" id="statusBadge">Loading...</span>
+                                                </div>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm" 
+                                                        id="refreshProfileBtn" title="Refresh profile data">
+                                                    <i class="bi bi-arrow-clockwise"></i>
+                                                </button>
+                                            </div>
+                                            <small class="text-muted">Account status is managed by administrators</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i>Close
+                </button>
+                <button type="button" class="btn btn-primary" id="saveProfileBtn">
+                    <i class="bi bi-save me-1"></i>Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Scripts -->
+    <script src="js/special-admin-script.js"></script>
+    <script src="js/update-profile.js"></script>
+    <script src="js/manage-accreditation-special-admin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="js/manage-announcement.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/event-expenses.js"></script>
+    <script src="js/manage-dept-fees.js"></script>
+    <script src="js/manage-general-fees.js"></script>
+    <script src="js/records.js"></script>
+    <script src="js/super-admin-home.js"></script>     
+    <script src="js/notifications.js"></script>    
+</body>
+
+</html>

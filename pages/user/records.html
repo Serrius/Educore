@@ -1,0 +1,425 @@
+<head>
+  <title>Records Management</title>
+  <style>
+    /* Page-specific helpers only, keep it lightweight */
+    #records-page h1 {
+      letter-spacing: 0.08em;
+      font-size: 1.6rem;
+    }
+    #records-page .page-subtitle {
+      font-size: 0.8rem;
+    }
+    #records-page .nav-tabs .nav-link {
+      font-weight: 500;
+      font-size: 12px;
+    }
+    #records-page .nav-tabs .nav-link i {
+      margin-right: 0.35rem;
+    }
+    #records-page .search-wrap {
+      max-width: 340px;
+    }
+    #records-page .table thead th {
+      white-space: nowrap;
+    }
+    #records-page .badge {
+      font-size: 0.75rem;
+    }
+    
+    /* Match manage-announcement read-only style */
+    #recordsReadOnlyBadge {
+      font-size: 0.75rem;
+    }
+    .disabled-action {
+      opacity: 0.4 !important;
+      pointer-events: none !important;
+    }
+
+    /* Make table headers/cells less dikit-dikit */
+    #records-page table th,
+    #records-page table td {
+      padding: 0.55rem 0.9rem;
+      vertical-align: middle;
+    }
+
+    /* Optional: keep headers readable */
+    #records-page table thead th {
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+    
+    /* Pagination styling */
+    .pagination .page-link {
+      font-size: 0.875rem;
+    }
+    
+    /* Table row hover effect */
+    .table-hover tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.025);
+    }
+    
+    /* Summary cards styling */
+    #recordsSummary .card {
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    #recordsSummary .card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Export button styling */
+    .export-btn {
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    }
+
+    .export-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+    }
+
+    /* Event expenses specific */
+    .event-row-details {
+      background-color: #f8f9fa;
+      border-left: 4px solid #6c757d;
+    }
+    
+    .event-summary-row td {
+      background-color: #e9ecef;
+      font-weight: 500;
+    }
+    
+    .expense-item-row:hover {
+      background-color: rgba(0, 0, 0, 0.025);
+    }
+    
+    .toggle-event-details {
+      cursor: pointer;
+    }
+    
+    .event-details-icon {
+      transition: transform 0.2s;
+    }
+    
+    .event-details-icon.expanded {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+
+<div class="container-fluid" id="records-page">
+  <!-- Page header -->
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <div class="d-flex flex-column">
+      <h1 class="mb-0 text-uppercase">RECORDS MANAGEMENT</h1>
+      <span class="page-subtitle text-muted">
+        Track organization fees, event expenses, and financial records.
+      </span>
+      <!-- Read-only badge: JS will show/hide this -->
+      <span id="recordsReadOnlyBadge" class="text-muted">
+        <strong><i class="bi bi-eye me-1">
+          Viewing another Academic Year
+         </i></strong>
+      </span>
+    </div>
+
+    <!-- Right side info / placeholder for consistency -->
+    <div class="text-end small" style="display: none;">
+      <div class="text-muted">Module: <span class="badge bg-secondary">Finance / Records</span></div>
+      <div class="mt-1">
+        <span class="text-muted">Current School Year:</span>
+        <span id="recordsCurrentSchoolYear" class="badge bg-primary">—</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="mt-0 mb-3">
+
+  <!-- AY filters (same style as manage-announcement) -->
+  <div class="d-flex justify-content-end gap-3 mb-3 flex-wrap">
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">School Year:</span>
+      <select
+        id="recordsAySelect"
+        class="form-select form-select-sm"
+        style="width:auto; min-width:140px;"
+      ></select>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">Semester:</span>
+      <select
+        id="recordsActiveYearSelect"
+        class="form-select form-select-sm"
+        style="width:auto; min-width:110px;"
+      ></select>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body pb-2">
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs" id="recordsTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" data-bs-toggle="tab" href="#org-fees" role="tab" aria-selected="true">
+            <i class="bi bi-cash-coin"></i> Organization Fees
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" href="#event-expenses" role="tab" aria-selected="false">
+            <i class="bi bi-receipt"></i> Event Expenses
+          </a>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content mt-3">
+        
+        <!-- ================= ORGANIZATION FEES ================= -->
+        <div class="tab-pane fade show active" id="org-fees" role="tabpanel">
+          <!-- Summary Section and Export Buttons -->
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <!-- Summary Cards -->
+            <div class="d-flex gap-3 flex-wrap" id="orgFeesSummary">
+              <div class="card border-0 bg-light" style="min-width: 180px;">
+                <div class="card-body py-2">
+                  <div class="small text-muted">Total Fees</div>
+                  <div class="h5 mb-0" id="orgFeesTotal">0</div>
+                </div>
+              </div>
+              <div class="card border-0 bg-success text-white" style="min-width: 180px;">
+                <div class="card-body py-2">
+                  <div class="small">Total Amount</div>
+                  <div class="h5 mb-0" id="orgFeesAmount">₱0.00</div>
+                </div>
+              </div>
+              <div class="card border-0 bg-primary text-white" style="min-width: 180px;">
+                <div class="card-body py-2">
+                  <div class="small">Paid</div>
+                  <div class="h5 mb-0" id="orgFeesPaid">0</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="d-flex gap-2">
+              <button class="btn btn-danger export-btn" id="exportOrgFeesPdfBtn">
+                <i class="bi bi-file-pdf me-1"></i> Export PDF
+              </button>
+              <button class="btn btn-success export-btn" id="exportOrgFeesCsvBtn">
+                <i class="bi bi-file-earmark-spreadsheet me-1"></i> Export CSV
+              </button>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text"
+                       class="form-control"
+                       id="orgFeesSearch"
+                       placeholder="Search receipt no, student ID, or name...">
+              </div>
+            </div>
+
+            <div class="d-flex gap-2">
+              <select class="form-select form-select-sm" id="orgFeesOrgFilter" style="width: auto;">
+                <option value="">All Organizations</option>
+                <!-- Will be populated by JS -->
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm border rounded">
+            <table id="orgFeesTable" class="table table-sm table-hover align-middle mb-0 w-100">
+              <thead class="table-light">
+                <tr>
+                  <th>Date</th>
+                  <th>Receipt No</th>
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>Organization</th>
+                  <th class="text-end">Amount</th>
+                  <th>Status</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="orgFeesTbody">
+                <tr><td colspan="8" class="text-center text-muted">Loading organization fees...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <nav aria-label="Organization fees pagination" class="mt-3">
+            <ul class="pagination pagination-sm justify-content-center" id="orgFeesPagination">
+              <!-- Pagination will be dynamically generated by JavaScript -->
+            </ul>
+          </nav>
+
+          <!-- Empty State -->
+          <div class="text-center py-5 d-none" id="orgFeesEmptyState">
+            <div class="mb-2">
+              <i class="bi bi-cash-coin fs-1 text-secondary"></i>
+            </div>
+            <p class="text-muted mb-0">No organization fees found for the selected filters.</p>
+          </div>
+        </div>
+
+        <!-- ================= EVENT EXPENSES ================= -->
+        <div class="tab-pane fade" id="event-expenses" role="tabpanel">
+          <!-- Summary Section and Export Buttons -->
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <!-- Summary Cards -->
+            <div class="d-flex gap-3 flex-wrap" id="eventExpensesSummary">
+              <div class="card border-0 bg-light" style="min-width: 120px;">
+                <div class="card-body py-2">
+                  <div class="small text-muted">Total Events</div>
+                  <div class="h5 mb-0" id="eventExpensesTotal">0</div>
+                </div>
+              </div>
+              <div class="card border-0 bg-success text-white" style="min-width: 120px;">
+                <div class="card-body py-2">
+                  <div class="small">Total Credits</div>
+                  <div class="h5 mb-0" id="eventExpensesCredits">₱0.00</div>
+                </div>
+              </div>
+              <div class="card border-0 bg-danger text-white" style="min-width: 120px;">
+                <div class="card-body py-2">
+                  <div class="small">Total Debits</div>
+                  <div class="h5 mb-0" id="eventExpensesDebits">₱0.00</div>
+                </div>
+              </div>
+              <div class="card border-0 bg-primary text-white" style="min-width: 120px;">
+                <div class="card-body py-2">
+                  <div class="small">Net Balance</div>
+                  <div class="h5 mb-0" id="eventExpensesBalance">₱0.00</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="d-flex gap-2">
+              <button class="btn btn-danger export-btn" id="exportEventExpensesPdfBtn">
+                <i class="bi bi-file-pdf me-1"></i> Export PDF
+              </button>
+              <button class="btn btn-success export-btn" id="exportEventExpensesCsvBtn">
+                <i class="bi bi-file-earmark-spreadsheet me-1"></i> Export CSV
+              </button>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text"
+                       class="form-control"
+                       id="eventExpensesSearch"
+                       placeholder="Search event title or organization...">
+              </div>
+            </div>
+
+            <div class="d-flex gap-2">
+              <select class="form-select form-select-sm" id="eventExpensesOrgFilter" style="width: auto;">
+                <option value="">All Organizations</option>
+                <!-- Will be populated by JS -->
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm border rounded">
+            <table id="eventExpensesTable" class="table table-sm align-middle mb-0 w-100">
+              <thead class="table-light">
+                <tr>
+                  <th></th>
+                  <th>Event</th>
+                  <th>Organization</th>
+                  <th>Date</th>
+                  <th class="text-end">Credits</th>
+                  <th class="text-end">Debits</th>
+                  <th class="text-end">Balance</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="eventExpensesTbody">
+                <tr><td colspan="9" class="text-center text-muted">Loading event expenses...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <nav aria-label="Event expenses pagination" class="mt-3">
+            <ul class="pagination pagination-sm justify-content-center" id="eventExpensesPagination">
+              <!-- Pagination will be dynamically generated by JavaScript -->
+            </ul>
+          </nav>
+
+          <!-- Empty State -->
+          <div class="text-center py-5 d-none" id="eventExpensesEmptyState">
+            <div class="mb-2">
+              <i class="bi bi-receipt fs-1 text-secondary"></i>
+            </div>
+            <p class="text-muted mb-0">No event expenses found for the selected filters.</p>
+          </div>
+        </div>
+
+      </div>
+      <!-- /tab-content -->
+    </div>
+  </div>
+</div>
+
+<!-- Record Details Modal -->
+<div class="modal fade" id="recordDetailsModal" tabindex="-1" aria-labelledby="recordDetailsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="recordDetailsLabel">Record Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="recordDetailsContent">
+        <!-- Content will be populated by JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="recordPrintBtn">
+          <i class="bi bi-printer me-1"></i>Print
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Event Details Modal -->
+<div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventDetailsLabel">Event Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="eventDetailsContent">
+        <!-- Content will be populated by JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="eventPrintBtn">
+          <i class="bi bi-printer me-1"></i>Print Liquidation
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Helper toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+  <div id="recordsToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="recordsToastMsg">Ready.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@ require 'database.php';
 header('Content-Type: application/json');
 
 try {
-    $stmt = $pdo->prepare("SELECT * FROM courses WHERE status != 'Unlisted' ORDER BY created_at DESC");
+    $stmt = $pdo->prepare("SELECT * FROM courses WHERE status ORDER BY created_at DESC");
     $stmt->execute();
     $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

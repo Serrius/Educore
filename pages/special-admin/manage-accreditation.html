@@ -1,0 +1,897 @@
+<head>
+  <title>Manage Accreditation</title>
+  <style>
+    /* Page-specific helpers, same vibe as other modules */
+    #manage-accreditation h1 {
+      letter-spacing: 0.08em;
+      font-size: 1.6rem;
+    }
+    #manage-accreditation .page-subtitle {
+      font-size: 0.8rem;
+    }
+    #manage-accreditation .nav-tabs .nav-link {
+      font-weight: 500;
+      font-size: 12px;
+    }
+    #manage-accreditation .nav-tabs .nav-link i {
+      margin-right: 0.35rem;
+    }
+    #manage-accreditation .search-wrap {
+      max-width: 340px;
+    }
+    #manage-accreditation .table thead th {
+      white-space: nowrap;
+    }
+    /* NEW: Review button styling */
+    .btn-review {
+      background-color: #6c757d;
+      border-color: #6c757d;
+      color: white;
+    }
+    .btn-review:hover {
+      background-color: #5a6268;
+      border-color: #545b62;
+      color: white;
+    }
+    .btn-review:disabled {
+      opacity: 0.65;
+    }
+  </style>
+</head>
+
+<!-- manage-accreditation.html (SPECIAL ADMIN VARIANT) -->
+<div class="container-fluid" id="manage-accreditation">
+  <!-- Page Header -->
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <div class="d-flex flex-column">
+      <h1 class="mb-0">MANAGE ACCREDITATION</h1>
+      <div class="page-subtitle text-muted">
+        <span class="me-1" style="display: none;">Module:</span>
+        <span class="badge bg-secondary" style="display: none;">Accreditation &amp; Organizations</span>
+      </div>
+    </div>
+    <div class="text-end small">
+      <div>
+        <span class="text-muted">Active Academic Year:</span>
+        <strong><span id="activeAYBadge">—</span></strong>
+      </div>
+    </div>
+  </div>
+  <hr class="mt-0 mb-3">
+
+  <!-- Main Card -->
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+
+      <!-- Tabs - SIMPLIFIED -->
+      <ul class="nav nav-tabs mb-3" id="accrTabs" role="tablist">
+        <!-- Pending (Combined New & Reaccreditation) -->
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="pending-accr-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#pending-accr"
+            type="button"
+            role="tab"
+            aria-controls="pending-accr"
+            aria-selected="true"
+          >
+            <i class="bi bi-hourglass-split"></i> Pending
+          </button>
+        </li>
+
+        <!-- Active (Combined Active & Reaccredited) -->
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="active-accr-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#active-accr"
+            type="button"
+            role="tab"
+            aria-controls="active-accr"
+            aria-selected="false"
+          >
+            <i class="bi bi-check-circle"></i> Active
+          </button>
+        </li>
+
+        <!-- Manage Accreditation -->
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="manage-accr-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#manage-accr-tabpane"
+            type="button"
+            role="tab"
+            aria-controls="manage-accr-tabpane"
+            aria-selected="false"
+          >
+            <i class="bi bi-list-ul"></i> Manage Accreditation
+          </button>
+        </li>        
+
+        <!-- Returned -->
+        <li class="nav-item" role="presentation" style="display: none;">
+          <button
+            class="nav-link"
+            id="returned-accr-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#returned-accr"
+            type="button"
+            role="tab"
+            aria-controls="returned-accr"
+            aria-selected="false"
+          >
+            <i class="bi bi-arrow-counterclockwise"></i> Returned
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab Panes -->
+      <div class="tab-content" id="accrTabsContent">
+        <!-- Pending Tab (Combined) -->
+        <div
+          class="tab-pane fade show active"
+          id="pending-accr"
+          role="tabpanel"
+          aria-labelledby="pending-accr-tab"
+        >
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="pendingAccrSearch"
+                  placeholder="Search organizations…"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table
+              id="pendingAccrTable"
+              class="table table-hover table-sm align-middle mb-0"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th style="width:80px;">ID</th>
+                  <th>Organization</th>
+                  <th>Scope</th>
+                  <th>Course</th>
+                  <th>Status</th>
+                  <th>AY</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Active Tab (Combined) -->
+        <div
+          class="tab-pane fade"
+          id="active-accr"
+          role="tabpanel"
+          aria-labelledby="active-accr-tab"
+        >
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="activeAccrSearch"
+                  placeholder="Search organizations…"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table
+              id="activeAccrTable"
+              class="table table-hover table-sm align-middle mb-0"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th style="width:80px;">ID</th>
+                  <th>Organization</th>
+                  <th>Scope</th>
+                  <th>Course</th>
+                  <th>Status</th>
+                  <th>AY</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Returned Tab -->
+        <div
+          class="tab-pane fade"
+          id="returned-accr"
+          role="tabpanel"
+          aria-labelledby="returned-accr-tab"
+        >
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="returnedAccrSearch"
+                  placeholder="Search organizations…"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table
+              id="returnedAccrTable"
+              class="table table-hover table-sm align-middle mb-0"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th style="width:80px;">ID</th>
+                  <th>Organization</th>
+                  <th>Scope</th>
+                  <th>Course</th>
+                  <th>Status</th>
+                  <th>AY</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Manage Accreditation Tab (original table moved here) -->
+        <div
+          class="tab-pane fade"
+          id="manage-accr-tabpane"
+          role="tabpanel"
+          aria-labelledby="manage-accr-tab"
+        >
+          <!-- Top row: Search + New Accreditation button -->
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+            <div class="search-wrap w-100 w-sm-50">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="accrSearch"
+                  placeholder="Search organizations…"
+                />
+              </div>
+            </div>
+            <div class="text-end">
+              <button
+                class="btn btn-primary btn-sm"
+                id="openAddOrgModal"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#addOrgModal"
+              >
+                <i class="bi bi-plus-circle me-1"></i> New Accreditation
+              </button>
+            </div>
+          </div>
+
+          <!-- Table (original) -->
+          <div class="table-responsive-sm">
+            <table
+              id="accrTable"
+              class="table table-hover table-sm align-middle mb-0"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th style="width:80px;">ID</th>
+                  <th>Organization</th>
+                  <th>Scope</th>
+                  <th>Course</th>
+                  <th>Status</th>
+                  <th>AY</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div><!-- /tab-content -->
+
+    </div><!-- /card-body -->
+  </div><!-- /card -->
+</div>
+
+<!-- Add Organization Modal (New Accreditation) -->
+<div class="modal fade" id="addOrgModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">New Accreditation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form id="addOrgForm" class="modal-body" enctype="multipart/form-data">
+        <input type="hidden" name="author_id_number" id="addAuthorIdHidden" />
+
+        <div class="row g-2">
+          <div class="col-md-5">
+            <label class="form-label">Organization Name</label>
+            <input type="text" class="form-control" name="org_name" required />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Abbreviation</label>
+            <input
+              type="text"
+              class="form-control"
+              name="org_abbr"
+              maxlength="50"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Admin (search by name/ID)</label>
+            <div class="dropdown w-100">
+              <input
+                type="text"
+                class="form-control"
+                id="addAdminSearch"
+                placeholder="Type at least 2 characters"
+              >
+              <input
+                type="hidden"
+                name="admin_id_number"
+                id="addAdminIdHidden"
+              >
+              <div id="addAdminMenu" class="dropdown-menu w-100"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-2 mt-2">
+          <div class="col-md-12">
+            <label class="form-label d-flex justify-content-between align-items-center">
+              <span>Organization Logo (site avatar; PNG/JPG)</span>
+              <small class="text-muted">Max 2MB</small>
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="org_logo"
+              accept="image/png,image/jpeg"
+            />
+          </div>
+        </div>
+
+        <hr />
+        <div class="mb-2">
+          <label class="form-label d-block">Scope</label>
+          <div class="btn-group" role="group">
+            <input
+              type="radio"
+              class="btn-check"
+              name="scope"
+              id="scope-general"
+              value="general"
+              checked
+            />
+            <label class="btn btn-outline-secondary" for="scope-general">
+              General (all courses)
+            </label>
+            <input
+              type="radio"
+              class="btn-check"
+              name="scope"
+              id="scope-exclusive"
+              value="exclusive"
+            />
+            <label class="btn btn-outline-primary" for="scope-exclusive">
+              Exclusive (specific course/department)
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-2 d-none" id="exclusiveCourseRow">
+          <label class="form-label d-block">Select Course/Department</label>
+          <div id="orgCourseChips" class="d-flex flex-wrap gap-1"></div>
+        </div>
+
+        <hr />
+        <div class="row g-3">
+          <!-- EXACT ORDER 1..20 -->
+          <div class="col-md-6">
+            <label class="form-label">1) Concept Paper of the Organization</label>
+            <input
+              type="file"
+              class="form-control"
+              name="concept_paper"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">2) VMGO</label>
+            <input
+              type="file"
+              class="form-control"
+              name="vmgo"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">3) Logo Design with Explanation</label>
+            <input
+              type="file"
+              class="form-control"
+              name="logo_explanation"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">4) Organizational Chart</label>
+            <input
+              type="file"
+              class="form-control"
+              name="org_chart"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              5) List of Current Officers (with Course/Year/ID)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="officers_list"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">
+              6) List of Current Members (with Course/Year/ID)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="members_list"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-12">
+            <label class="form-label d-flex align-items-center justify-content-between">
+              <span>
+                7) Personal Data Sheet of Officers (attach COR) — add multiple
+              </span>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-secondary"
+                id="addMoreBiodata"
+              >
+                <i class="bi bi-plus-circle"></i> Add another file
+              </button>
+            </label>
+            <div class="vstack gap-2" id="bioList">
+              <input
+                type="file"
+                class="form-control"
+                name="pds_officers[]"
+                accept="image/*,.pdf"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              8) Faculty Letter of Acceptance (Adviser/Moderator) – Request &amp; Acceptance
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="adviser_moderator_acceptance"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">
+              9) Proposed Program of Activities (Current AY) — (New only)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="proposed_program"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              10) Annual Work and Financial Plan (AWFP)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="awfp"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">
+              11) Constitution &amp; By-Laws (ratified, with amendments)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="cbl"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">12) Photocopy of Bank Passbook</label>
+            <input
+              type="file"
+              class="form-control"
+              name="bank_passbook"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">
+              13) Properly Compiled Accomplishment Report
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="accomplishment_report"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">14) Financial Statement (audited)</label>
+            <input
+              type="file"
+              class="form-control"
+              name="financial_statement"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">
+              15) Report on the Conduct of Trainings
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="trainings_report"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">16) President's Report</label>
+            <input
+              type="file"
+              class="form-control"
+              name="presidents_report"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">17) Adviser's/Moderator's Report</label>
+            <input
+              type="file"
+              class="form-control"
+              name="advisers_report"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <!-- 18 (Old only) appears on Reaccreditation modal -->
+          <div class="col-md-6">
+            <label class="form-label">
+              19) Evaluation of Moderator, Officers &amp; Organization
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="evaluation"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">
+              20) Contact Details of Adviser/Moderator &amp; Officers
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="contact_details"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+        </div>
+
+        <small class="text-muted d-block mt-3">
+          Submissions are tied to the current Active Academic Year.
+        </small>
+      </form>
+
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-primary" id="saveAddOrgBtn" type="button">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reaccreditation / Old Modal -->
+<div class="modal fade" id="reaccrModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Reaccreditation / Old Requirements</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form id="reaccrForm" class="modal-body" enctype="multipart/form-data">
+        <input type="hidden" name="org_id" />
+        <input type="hidden" name="author_id_number" id="reaccrAuthorIdHidden" />
+
+        <div class="row g-3">
+          <!-- Keep numeric labels to mirror checklist -->
+          <div class="col-md-6">
+            <label class="form-label">5) Updated List of Officers</label>
+            <input
+              type="file"
+              class="form-control"
+              name="officers_list"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">6) Updated List of Members</label>
+            <input
+              type="file"
+              class="form-control"
+              name="members_list"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-12">
+            <label class="form-label d-flex align-items-center justify-content-between">
+              <span>7) PDS of Officers (attach COR) — add multiple</span>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-secondary"
+                id="addMoreReBiodata"
+              >
+                <i class="bi bi-plus-circle"></i> Add another file
+              </button>
+            </label>
+            <div class="vstack gap-2" id="reBioList">
+              <input
+                type="file"
+                class="form-control"
+                name="pds_officers[]"
+                accept="image/*,.pdf"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              8) Adviser/Moderator Acceptance (Request &amp; Acceptance)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="adviser_moderator_acceptance"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">
+              10) Annual Work and Financial Plan (AWFP)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="awfp"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">11) CBL (ratified)</label>
+            <input
+              type="file"
+              class="form-control"
+              name="cbl"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">12) Photocopy of Bank Passbook</label>
+            <input
+              type="file"
+              class="form-control"
+              name="bank_passbook"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">13) Accomplishment Report</label>
+            <input
+              type="file"
+              class="form-control"
+              name="accomplishment_report"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">14) Financial Statement (audited)</label>
+            <input
+              type="file"
+              class="form-control"
+              name="financial_statement"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              15) Report on the Conduct of Trainings
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="trainings_report"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">16) President's Report</label>
+            <input
+              type="file"
+              class="form-control"
+              name="presidents_report"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">17) Adviser's/Moderator's Report</label>
+            <input
+              type="file"
+              class="form-control"
+              name="advisers_report"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              18) General Program of Activities (Old)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="general_program"
+              accept="image/*,.pdf"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              19) Evaluation of Moderator, Officers &amp; Organization
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="evaluation"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">
+              20) Contact Details (Adviser/Moderator &amp; Officers)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              name="contact_details"
+              accept="image/*,.pdf"
+              required
+            />
+          </div>
+        </div>
+
+        <small class="text-muted d-block mt-3">
+          Submission is recorded under the current Active Academic Year.
+        </small>
+      </form>
+
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-primary" id="saveReaccrBtn" type="button">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- (Optional) Doc Viewer -->
+<div class="modal fade" id="docViewerModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="docViewerTitle">Document Preview</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-0">
+        <iframe
+          id="docViewerFrame"
+          src=""
+          style="width:100%;height:75vh;border:0;"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
